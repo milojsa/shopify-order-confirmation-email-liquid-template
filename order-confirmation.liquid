@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmation</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .email-container {
+            background-color: #ffffff;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .header {
+            text-align: center;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #e0e0e0;
+            margin-bottom: 30px;
+        }
+        .logo {
+            max-width: 200px;
+            height: auto;
+        }
+        h1 {
+            color: #2c3e50;
+            font-size: 24px;
+            margin: 20px 0 10px;
+        }
+        h2 {
+            color: #34495e;
+            font-size: 18px;
+            margin: 25px 0 15px;
+            border-bottom: 1px solid #e0e0e0;
+            padding-bottom: 10px;
+        }
+        .order-info {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        .order-info p {
+            margin: 8px 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th {
+            background-color: #f8f9fa;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+            border-bottom: 2px solid #dee2e6;
+        }
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #dee2e6;
+        }
+        .product-image {
+            max-width: 60px;
+            height: auto;
+            border-radius: 4px;
+        }
+        .totals-table {
+            margin-top: 20px;
+        }
+        .totals-table td {
+            text-align: right;
+            padding: 8px 12px;
+        }
+        .totals-table .label {
+            text-align: left;
+            font-weight: 500;
+        }
+        .total-row {
+            font-size: 18px;
+            font-weight: bold;
+            background-color: #f8f9fa;
+        }
+        .addresses {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .address-block {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        .address-block h3 {
+            margin-top: 0;
+            font-size: 16px;
+            color: #2c3e50;
+        }
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid #e0e0e0;
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+        .button {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: #3498db;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 20px 0;
+            font-weight: 600;
+        }
+        .button:hover {
+            background-color: #2980b9;
+        }
+        @media only screen and (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+            .email-container {
+                padding: 20px;
+            }
+            .addresses {
+                grid-template-columns: 1fr;
+            }
+            table {
+                font-size: 14px;
+            }
+            th, td {
+                padding: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="email-container">
+        <!-- Header Section -->
+        <div class="header">
+            {% if shop.logo %}
+            <img src="{{ shop.logo }}" alt="{{ shop.name }}" class="logo">
+            {% else %}
+            <h1>{{ shop.name }}</h1>
+            {% endif %}
+            <p style="color: #27ae60; font-size: 18px; margin-top: 15px;">✓ Order Confirmed</p>
+        </div>
+
+        <!-- Greeting -->
+        <p>Hi {% if customer.first_name %}{{ customer.first_name }}{% else %}{{ customer.email }}{% endif %},</p>
+        <p>Thank you for your order! We're getting your order ready to be shipped. We'll notify you when it has been sent.</p>
+
+        <!-- Order Information -->
+        <div class="order-info">
+            <p><strong>Order Number:</strong> {{ order.name }}</p>
+            <p><strong>Order Date:</strong> {{ order.created_at | date: "%B %d, %Y" }}</p>
+            {% if order.customer %}
+            <p><strong>Customer Email:</strong> {{ order.customer.email }}</p>
+            {% endif %}
+        </div>
+
+        <!-- Order Summary Button -->
+        <div style="text-align: center;">
+            <a href="{{ shop.url }}/account" class="button">View Your Order</a>
+        </div>
+
+        <!-- Order Items -->
+        <h2>Order Summary</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th style="text-align: center;">Quantity</th>
+                    <th style="text-align: right;">Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for line in line_items %}
+                <tr>
+                    <td>
+                        {% if line.image %}
+                        <img src="{{ line.image | img_url: 'small' }}" alt="{{ line.title }}" class="product-image" style="vertical-align: middle; margin-right: 10px;">
+                        {% endif %}
+                        <strong>{{ line.title }}</strong>
+                        {% if line.variant.title != 'Default Title' %}
+                        <br><small style="color: #7f8c8d;">{{ line.variant.title }}</small>
+                        {% endif %}
+                        {% if line.properties %}
+                        {% for property in line.properties %}
+                        <br><small style="color: #7f8c8d;">{{ property.first }}: {{ property.last }}</small>
+                        {% endfor %}
+                        {% endif %}
+                    </td>
+                    <td style="text-align: center;">{{ line.quantity }}</td>
+                    <td style="text-align: right;">{{ line.final_line_price | money }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <!-- Totals -->
+        <table class="totals-table">
+            <tr>
+                <td class="label">Subtotal:</td>
+                <td>{{ subtotal_price | money }}</td>
+            </tr>
+            {% if shipping_lines %}
+            <tr>
+                <td class="label">Shipping ({{ shipping_lines.first.title }}):</td>
+                <td>{{ shipping_lines.first.price | money }}</td>
+            </tr>
+            {% endif %}
+            {% if discounts %}
+            {% for discount in discounts %}
+            <tr>
+                <td class="label">Discount ({{ discount.code }}):</td>
+                <td style="color: #27ae60;">-{{ discount.amount | money }}</td>
+            </tr>
+            {% endfor %}
+            {% endif %}
+            {% if tax_lines %}
+            {% for tax_line in tax_lines %}
+            <tr>
+                <td class="label">{{ tax_line.title }} ({{ tax_line.rate_percentage }}%):</td>
+                <td>{{ tax_line.price | money }}</td>
+            </tr>
+            {% endfor %}
+            {% endif %}
+            <tr class="total-row">
+                <td class="label">Total:</td>
+                <td>{{ total_price | money }} {{ currency }}</td>
+            </tr>
+        </table>
+
+        <!-- Addresses Section -->
+        <h2>Delivery & Billing Information</h2>
+        <div class="addresses">
+            <!-- Shipping Address -->
+            <div class="address-block">
+                <h3>Shipping Address</h3>
+                {% if shipping_address %}
+                <p>
+                    {{ shipping_address.name }}<br>
+                    {{ shipping_address.address1 }}<br>
+                    {% if shipping_address.address2 %}
+                    {{ shipping_address.address2 }}<br>
+                    {% endif %}
+                    {{ shipping_address.city }}, {{ shipping_address.province_code }} {{ shipping_address.zip }}<br>
+                    {{ shipping_address.country }}
+                </p>
+                {% if shipping_address.phone %}
+                <p><strong>Phone:</strong> {{ shipping_address.phone }}</p>
+                {% endif %}
+                {% else %}
+                <p>No shipping address provided</p>
+                {% endif %}
+            </div>
+
+            <!-- Billing Address -->
+            <div class="address-block">
+                <h3>Billing Address</h3>
+                {% if billing_address %}
+                <p>
+                    {{ billing_address.name }}<br>
+                    {{ billing_address.address1 }}<br>
+                    {% if billing_address.address2 %}
+                    {{ billing_address.address2 }}<br>
+                    {% endif %}
+                    {{ billing_address.city }}, {{ billing_address.province_code }} {{ billing_address.zip }}<br>
+                    {{ billing_address.country }}
+                </p>
+                {% if billing_address.phone %}
+                <p><strong>Phone:</strong> {{ billing_address.phone }}</p>
+                {% endif %}
+                {% else %}
+                <p>No billing address provided</p>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Payment Information -->
+        <h2>Payment Method</h2>
+        <div class="order-info">
+            {% if payment_terms %}
+            <p><strong>Payment Terms:</strong> {{ payment_terms.type }}</p>
+            {% endif %}
+            {% if transactions %}
+            {% for transaction in transactions %}
+            {% if transaction.status == "success" %}
+            <p><strong>Payment Method:</strong> {{ transaction.gateway | capitalize }}</p>
+            <p><strong>Transaction ID:</strong> {{ transaction.id }}</p>
+            {% endif %}
+            {% endfor %}
+            {% else %}
+            <p>Payment information will be updated once processed.</p>
+            {% endif %}
+        </div>
+
+        <!-- Customer Support -->
+        <h2>Need Help?</h2>
+        <p>If you have any questions about your order, please contact our customer support team:</p>
+        <div class="order-info">
+            {% if shop.email %}
+            <p><strong>Email:</strong> <a href="mailto:{{ shop.email }}">{{ shop.email }}</a></p>
+            {% endif %}
+            {% if shop.phone %}
+            <p><strong>Phone:</strong> {{ shop.phone }}</p>
+            {% endif %}
+            <p><strong>Website:</strong> <a href="{{ shop.url }}">{{ shop.url }}</a></p>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>Thank you for shopping with us!</p>
+            <p>{{ shop.name }}</p>
+            {% if shop.address %}
+            <p>
+                {{ shop.address.address1 }}, 
+                {{ shop.address.city }}, {{ shop.address.province_code }} {{ shop.address.zip }}, 
+                {{ shop.address.country }}
+            </p>
+            {% endif %}
+            <p style="margin-top: 20px; font-size: 12px;">
+                This is an automated email. Please do not reply directly to this message.
+            </p>
+        </div>
+    </div>
+</body>
+</html>
