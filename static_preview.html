@@ -1,13 +1,10 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" lang="en">
 
 <head>
 	<title></title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0"><!--[if mso]>
-<xml><w:WordDocument xmlns:w="urn:schemas-microsoft-com:office:word"><w:DontUseAdvancedTypographyReadingMail/></w:WordDocument>
-<o:OfficeDocumentSettings><o:PixelsPerInch>96</o:PixelsPerInch><o:AllowPNG/></o:OfficeDocumentSettings></xml>
-<![endif]--><!--[if !mso]><!--><!--<![endif]-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<style>
 		* {
 			box-sizing: border-box;
@@ -493,7 +490,7 @@
 													<table class="heading_block block-1" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
 														<tr>
 															<td class="pad" style="text-align:center;width:100%;">
-																<h1 style="margin: 0; color: #ffffff; direction: ltr; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 38px; font-weight: 700; letter-spacing: normal; line-height: 1.2; text-align: center; margin-top: 0; margin-bottom: 0; mso-line-height-alt: 46px;"><span class="tinyMce-placeholder" style="word-break: break-word;">Hi {{ customer.first_name | default: billing_address.first_name }}, <br>Your Order is Confirmed</span></h1>
+																<h1 style="margin: 0; color: #ffffff; direction: ltr; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 38px; font-weight: 700; letter-spacing: normal; line-height: 1.2; text-align: center; margin-top: 0; margin-bottom: 0; mso-line-height-alt: 46px;"><span class="tinyMce-placeholder" style="word-break: break-word;">Hi John, <br>Your Order is Confirmed</span></h1>
 															</td>
 														</tr>
 													</table>
@@ -512,7 +509,7 @@
 														<tr>
 															<td class="pad">
 																<div style="color:#ffffff;direction:ltr;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;letter-spacing:0px;line-height:1.2;text-align:center;mso-line-height-alt:19px;">
-																	<p style="margin: 0;">We’ll contact you if any fitment issues are identified. <br>A final invoice will be issued after delivery</p>
+																	<p style="margin: 0;">Weâ€™ll contact you if any fitment issues are identified. <br>A final invoice will be issued after delivery</p>
 																</div>
 															</td>
 														</tr>
@@ -573,7 +570,7 @@
 													<table class="heading_block block-1" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
 														<tr>
 															<td class="pad" style="text-align:center;width:100%;">
-																<h2 style="margin: 0; color: #000000; direction: ltr; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 30px; font-weight: 400; letter-spacing: normal; line-height: 1.2; text-align: center; margin-top: 0; margin-bottom: 0; mso-line-height-alt: 36px;"><span class="tinyMce-placeholder" style="word-break: break-word;">Order No. <strong>{{ name }}<br></strong></span></h2>
+																<h2 style="margin: 0; color: #000000; direction: ltr; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 30px; font-weight: 400; letter-spacing: normal; line-height: 1.2; text-align: center; margin-top: 0; margin-bottom: 0; mso-line-height-alt: 36px;"><span class="tinyMce-placeholder" style="word-break: break-word;">Order No. <strong>#DN-12345<br></strong></span></h2>
 															</td>
 														</tr>
 													</table>
@@ -581,7 +578,7 @@
 														<tr>
 															<td class="pad">
 																<div style="color:#101112;direction:ltr;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;letter-spacing:0px;line-height:1.2;text-align:center;mso-line-height-alt:19px;">
-																	<p style="margin: 0;">{{ created_at | date: "%B %d, %Y" }}</p>
+																	<p style="margin: 0;">February 06, 2026</p>
 																</div>
 															</td>
 														</tr>
@@ -623,7 +620,7 @@
 														<tr>
 															<td class="pad">
 																<div style="color:#000000;direction:ltr;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;letter-spacing:0px;line-height:1.2;text-align:left;mso-line-height-alt:19px;">
-																	<p style="margin: 0;"><strong>Vehicle Details</strong><br>{% if order.metafields.custom.vehicle != blank %}{{ order.metafields.custom.vehicle }}{% else %}No vehicle information provided{% endif %}</p>
+																	<p style="margin: 0;"><strong>Vehicle Details</strong><br>2023 Ford F-150 XLT 4WD SuperCrew</p>
 																</div>
 															</td>
 														</tr>
@@ -637,7 +634,7 @@
 														<tr>
 															<td class="pad">
 																<div style="color:#000000;direction:ltr;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;letter-spacing:0px;line-height:1.2;text-align:left;mso-line-height-alt:19px;">
-																	<p style="margin: 0;"><strong>Order Notes</strong><br>{% comment %}TODO: Waiting for David's clarification on custom.inventory_info metafield{% endcomment %}{% if order.metafields.custom.inventory_info != blank %}{{ order.metafields.custom.inventory_info | newline_to_br }}{% else %}No order notes{% endif %}</p>
+																	<p style="margin: 0;"><strong>Order Notes</strong><br>Customer requested black lug nuts</p>
 																</div>
 															</td>
 														</tr>
@@ -692,7 +689,9 @@
 							</tr>
 						</tbody>
 					</table>
-					{% for line_item in line_items %}
+					<!-- Products Section -->
+					
+					<!-- Product 1: Fuel Rebel Wheels -->
 					<table class="row row-product" align="center" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
 						<tbody>
 							<tr>
@@ -705,7 +704,7 @@
 														<tr>
 															<td class="pad" style="width:100%;padding-right:0px;padding-left:0px;">
 																<div class="alignment" align="center">
-																	<div class="fullWidth" style="max-width: 92.88px;">{% if line_item.image %}<img src="{{ line_item.image | image_url: width: 200 }}" style="display: block; height: auto; border: 0; width: 100%;" width="92.88" alt="{{ line_item.title | escape }}" title="{{ line_item.title | escape }}">{% endif %}</div>
+																	<div class="fullWidth" style="max-width: 92.88px; background:#f0f0f0; height:93px; display:flex; align-items:center; justify-content:center; border-radius:4px;"><span style="color:#999; font-size:12px;">Wheel Image</span></div>
 																</div>
 															</td>
 														</tr>
@@ -716,77 +715,46 @@
 														<tr>
 															<td class="pad">
 																<div style="color:#101112;direction:ltr;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;letter-spacing:0px;line-height:1.2;text-align:left;mso-line-height-alt:19px;">
-																	<p style="margin: 0;">{{ line_item.product.title | default: line_item.title }}{% if line_item.variant.title != blank and line_item.variant.title != "Default Title" %} - {{ line_item.variant.title }}{% endif %}</p>
+																	<p style="margin: 0;">Fuel Rebel D679 - 20x9 Matte Black</p>
 																</div>
 															</td>
 														</tr>
 													</table>
 													<div class="spacer_block block-2" style="height:10px;line-height:10px;font-size:1px;">&#8202;</div>
-													{% if line_item.sku != blank %}
 													<table class="paragraph_block block-3" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;">
 														<tr>
 															<td class="pad">
 																<div style="color:#101112;direction:ltr;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;letter-spacing:0px;line-height:1.2;text-align:left;mso-line-height-alt:19px;">
-																	<p style="margin: 0;">SKU: {{ line_item.sku }}</p>
+																	<p style="margin: 0;">SKU: FUEL-D679-20X9-6X135</p>
 																</div>
 															</td>
 														</tr>
 													</table>
-													{% endif %}
 													<table class="paragraph_block block-4" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;">
 														<tr>
 															<td class="pad">
 																<div style="color:#101112;direction:ltr;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;letter-spacing:0px;line-height:1.2;text-align:left;mso-line-height-alt:19px;">
-																	<p style="margin: 0;">Quantity: {{ line_item.quantity }} x {% if line_item.original_price != line_item.final_price %}<span style="word-break: break-word; text-decoration: line-through;">{{ line_item.original_price | money }}</span> {% endif %}{{ line_item.final_price | money }}</p>
+																	<p style="margin: 0;">Quantity: 4 x $289.00</p>
 																</div>
 															</td>
 														</tr>
 													</table>
-													{% if line_item.product.metafields.magento.lead_time != blank %}
-													{% unless line_item.sku contains 'MOUNTBALANCE' %}
 													<table class="paragraph_block block-5" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;">
 														<tr>
 															<td class="pad">
 																<div style="color:#101112;direction:ltr;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;letter-spacing:0px;line-height:1.2;text-align:left;mso-line-height-alt:19px;">
-																	<p style="margin: 0;">Lead Time: {{ line_item.product.metafields.magento.lead_time }} Days</p>
+																	<p style="margin: 0;">Lead Time: 7 Days</p>
 																</div>
 															</td>
 														</tr>
 													</table>
-													{% endunless %}
-													{% if line_item.sku contains 'MOUNTBALANCE' %}
-													{% comment %}Calculate longest lead time for MOUNTBALANCE packages{% endcomment %}
-													{% assign max_lead_time = 0 %}
-													{% for item in line_items %}
-														{% unless item.sku contains 'MOUNTBALANCE' %}
-															{% if item.product.metafields.magento.lead_time != blank %}
-																{% assign item_lead_time = item.product.metafields.magento.lead_time | plus: 0 %}
-																{% if item_lead_time > max_lead_time %}
-																	{% assign max_lead_time = item_lead_time %}
-																{% endif %}
-															{% endif %}
-														{% endunless %}
-													{% endfor %}
-													{% if max_lead_time > 0 %}
-													<table class="paragraph_block block-5" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;">
-														<tr>
-															<td class="pad">
-																<div style="color:#101112;direction:ltr;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;letter-spacing:0px;line-height:1.2;text-align:left;mso-line-height-alt:19px;">
-																	<p style="margin: 0;">Lead Time: {{ max_lead_time }} Days</p>
-																</div>
-															</td>
-														</tr>
-													</table>
-													{% endif %}
-													{% endif %}
-													{% endif %}
 												</td>
 												<td class="column column-3" width="33.333333333333336%" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; border-right: 1px solid #e3e4e6; border-top: 1px solid #e3e4e6; padding-bottom: 20px; padding-right: 20px; padding-top: 20px; vertical-align: top; border-radius: 0px;">
 													<table class="paragraph_block block-1" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;">
 														<tr>
 															<td class="pad">
 																<div style="color:#101112;direction:ltr;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;letter-spacing:0px;line-height:1.2;text-align:right;mso-line-height-alt:19px;">
-																	<p style="margin: 0;">{% if line_item.original_line_price != line_item.final_line_price %}<span style="word-break: break-word; text-decoration: line-through;">{{ line_item.original_line_price | money }}</span><br>{% endif %}{{ line_item.final_line_price | money }}</p>
+																	<p style="margin: 0;">$1,156.00</p>
 																</div>
 															</td>
 														</tr>
@@ -799,34 +767,7 @@
 							</tr>
 						</tbody>
 					</table>
-					{% if line_item.product.metafields.magento.notes != blank %}
-					<table class="row row-product-notes" align="center" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
-						<tbody>
-							<tr>
-								<td>
-									<table class="row-content" align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #ffffff; border-radius: 0; color: #000000; width: 100%; max-width: 600px; margin: 0 auto;" width="600">
-										<tbody>
-											<tr>
-												<td class="column column-1" width="100%" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; background-color: #f5f5f5; border-bottom: 1px solid #e3e4e6; border-left: 1px solid #e3e4e6; border-right: 1px solid #e3e4e6; border-top: 1px solid #e3e4e6; padding-bottom: 20px; padding-left: 20px; padding-right: 20px; padding-top: 20px; vertical-align: middle; border-radius: 0px 0px 0px 0px;">
-													<table class="paragraph_block block-1" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;">
-														<tr>
-															<td class="pad">
-																<div style="color:#101112;direction:ltr;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;letter-spacing:0px;line-height:1.2;text-align:left;mso-line-height-alt:19px;">
-																	<p style="margin: 0;">{{ line_item.product.metafields.magento.notes }}</p>
-																</div>
-															</td>
-														</tr>
-													</table>
-												</td>
-											</tr>
-										</tbody>
-									</table>
-								</td>
-							</tr>
-						</tbody>
-					</table>
-					{% endif %}
-					{% unless forloop.last %}
+					<!-- Spacer between products -->
 					<table class="row row-spacer" align="center" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
 						<tbody>
 							<tr>
@@ -844,8 +785,193 @@
 							</tr>
 						</tbody>
 					</table>
-					{% endunless %}
-					{% endfor %}
+					<!-- Product 2: BF Goodrich Tires -->
+					<table class="row row-product" align="center" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
+						<tbody>
+							<tr>
+								<td>
+									<table class="row-content" align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #ffffff; border-radius: 0; color: #000000; width: 100%; max-width: 600px; margin: 0 auto;" width="600">
+										<tbody>
+											<tr>
+												<td class="column column-1" width="25%" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; border-left: 1px solid #e3e4e6; border-top: 1px solid #e3e4e6; padding-bottom: 20px; padding-left: 20px; padding-top: 20px; vertical-align: top; border-radius: 0px;">
+													<table class="image_block block-1" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
+														<tr>
+															<td class="pad" style="width:100%;padding-right:0px;padding-left:0px;">
+																<div class="alignment" align="center">
+																	<div class="fullWidth" style="max-width: 92.88px; background:#f0f0f0; height:93px; display:flex; align-items:center; justify-content:center; border-radius:4px;"><span style="color:#999; font-size:12px;">Tire Image</span></div>
+																</div>
+															</td>
+														</tr>
+													</table>
+												</td>
+												<td class="column column-2" width="41.666666666666664%" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; border-top: 1px solid #e3e4e6; padding-bottom: 20px; padding-left: 20px; padding-top: 20px; vertical-align: top; border-radius: 0px;">
+													<table class="paragraph_block block-1" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;">
+														<tr>
+															<td class="pad">
+																<div style="color:#101112;direction:ltr;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;letter-spacing:0px;line-height:1.2;text-align:left;mso-line-height-alt:19px;">
+																	<p style="margin: 0;">BF Goodrich All-Terrain T/A KO2 - 275/60R20</p>
+																</div>
+															</td>
+														</tr>
+													</table>
+													<div class="spacer_block block-2" style="height:10px;line-height:10px;font-size:1px;">&#8202;</div>
+													<table class="paragraph_block block-3" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;">
+														<tr>
+															<td class="pad">
+																<div style="color:#101112;direction:ltr;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;letter-spacing:0px;line-height:1.2;text-align:left;mso-line-height-alt:19px;">
+																	<p style="margin: 0;">SKU: BFG-KO2-27560R20</p>
+																</div>
+															</td>
+														</tr>
+													</table>
+													<table class="paragraph_block block-4" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;">
+														<tr>
+															<td class="pad">
+																<div style="color:#101112;direction:ltr;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;letter-spacing:0px;line-height:1.2;text-align:left;mso-line-height-alt:19px;">
+																	<p style="margin: 0;">Quantity: 4 x $312.00</p>
+																</div>
+															</td>
+														</tr>
+													</table>
+													<table class="paragraph_block block-5" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;">
+														<tr>
+															<td class="pad">
+																<div style="color:#101112;direction:ltr;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;letter-spacing:0px;line-height:1.2;text-align:left;mso-line-height-alt:19px;">
+																	<p style="margin: 0;">Lead Time: 3 Days</p>
+																</div>
+															</td>
+														</tr>
+													</table>
+												</td>
+												<td class="column column-3" width="33.333333333333336%" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; border-right: 1px solid #e3e4e6; border-top: 1px solid #e3e4e6; padding-bottom: 20px; padding-right: 20px; padding-top: 20px; vertical-align: top; border-radius: 0px;">
+													<table class="paragraph_block block-1" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;">
+														<tr>
+															<td class="pad">
+																<div style="color:#101112;direction:ltr;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;letter-spacing:0px;line-height:1.2;text-align:right;mso-line-height-alt:19px;">
+																	<p style="margin: 0;">$1,248.00</p>
+																</div>
+															</td>
+														</tr>
+													</table>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<!-- Product Notes -->
+					<table class="row row-product-notes" align="center" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
+						<tbody>
+							<tr>
+								<td>
+									<table class="row-content" align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #ffffff; border-radius: 0; color: #000000; width: 100%; max-width: 600px; margin: 0 auto;" width="600">
+										<tbody>
+											<tr>
+												<td class="column column-1" width="100%" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; background-color: #f5f5f5; border-bottom: 1px solid #e3e4e6; border-left: 1px solid #e3e4e6; border-right: 1px solid #e3e4e6; border-top: 1px solid #e3e4e6; padding-bottom: 20px; padding-left: 20px; padding-right: 20px; padding-top: 20px; vertical-align: middle; border-radius: 0px 0px 0px 0px;">
+													<table class="paragraph_block block-1" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;">
+														<tr>
+															<td class="pad">
+																<div style="color:#101112;direction:ltr;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;letter-spacing:0px;line-height:1.2;text-align:left;mso-line-height-alt:19px;">
+																	<p style="margin: 0;">Note: These tires have a 60,000 mile treadwear warranty. UTQG rating: 500 A B</p>
+																</div>
+															</td>
+														</tr>
+													</table>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<!-- Spacer between products -->
+					<table class="row row-spacer" align="center" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
+						<tbody>
+							<tr>
+								<td>
+									<table class="row-content stack" align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #ffffff; border-radius: 0; color: #000000; width: 100%; max-width: 600px; margin: 0 auto;" width="600">
+										<tbody>
+											<tr>
+												<td class="column column-1" width="100%" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; vertical-align: top;">
+													<div class="spacer_block block-1" style="height:10px;line-height:10px;font-size:1px;">&#8202;</div>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<!-- Product 3: Installation Kit -->
+					<table class="row row-product" align="center" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
+						<tbody>
+							<tr>
+								<td>
+									<table class="row-content" align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #ffffff; border-radius: 0; color: #000000; width: 100%; max-width: 600px; margin: 0 auto;" width="600">
+										<tbody>
+											<tr>
+												<td class="column column-1" width="25%" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; border-left: 1px solid #e3e4e6; border-top: 1px solid #e3e4e6; padding-bottom: 20px; padding-left: 20px; padding-top: 20px; vertical-align: top; border-radius: 0px;">
+													<table class="image_block block-1" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
+														<tr>
+															<td class="pad" style="width:100%;padding-right:0px;padding-left:0px;">
+																<div class="alignment" align="center">
+																	<div class="fullWidth" style="max-width: 92.88px; background:#f0f0f0; height:93px; display:flex; align-items:center; justify-content:center; border-radius:4px;"><span style="color:#999; font-size:12px;">Kit Image</span></div>
+																</div>
+															</td>
+														</tr>
+													</table>
+												</td>
+												<td class="column column-2" width="41.666666666666664%" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; border-top: 1px solid #e3e4e6; padding-bottom: 20px; padding-left: 20px; padding-top: 20px; vertical-align: top; border-radius: 0px;">
+													<table class="paragraph_block block-1" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;">
+														<tr>
+															<td class="pad">
+																<div style="color:#101112;direction:ltr;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;letter-spacing:0px;line-height:1.2;text-align:left;mso-line-height-alt:19px;">
+																	<p style="margin: 0;">Installation Kit - Black Lug Nuts + Hub Rings</p>
+																</div>
+															</td>
+														</tr>
+													</table>
+													<div class="spacer_block block-2" style="height:10px;line-height:10px;font-size:1px;">&#8202;</div>
+													<table class="paragraph_block block-3" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;">
+														<tr>
+															<td class="pad">
+																<div style="color:#101112;direction:ltr;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;letter-spacing:0px;line-height:1.2;text-align:left;mso-line-height-alt:19px;">
+																	<p style="margin: 0;">SKU: INST-KIT-F150-BLK</p>
+																</div>
+															</td>
+														</tr>
+													</table>
+													<table class="paragraph_block block-4" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;">
+														<tr>
+															<td class="pad">
+																<div style="color:#101112;direction:ltr;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;letter-spacing:0px;line-height:1.2;text-align:left;mso-line-height-alt:19px;">
+																	<p style="margin: 0;">Quantity: 1 x $89.00</p>
+																</div>
+															</td>
+														</tr>
+													</table>
+												</td>
+												<td class="column column-3" width="33.333333333333336%" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; border-right: 1px solid #e3e4e6; border-top: 1px solid #e3e4e6; padding-bottom: 20px; padding-right: 20px; padding-top: 20px; vertical-align: top; border-radius: 0px;">
+													<table class="paragraph_block block-1" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;">
+														<tr>
+															<td class="pad">
+																<div style="color:#101112;direction:ltr;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;letter-spacing:0px;line-height:1.2;text-align:right;mso-line-height-alt:19px;">
+																	<p style="margin: 0;">$89.00</p>
+																</div>
+															</td>
+														</tr>
+													</table>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</td>
+							</tr>
+						</tbody>
+					</table>
 					<table class="row row-14" align="center" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
 						<tbody>
 							<tr>
@@ -863,6 +989,7 @@
 							</tr>
 						</tbody>
 					</table>
+					<!-- Payment Summary Header -->
 					<table class="row row-15" align="center" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
 						<tbody>
 							<tr>
@@ -888,245 +1015,35 @@
 							</tr>
 						</tbody>
 					</table>
+					<!-- Item Total Row -->
 					<table class="row row-16" align="center" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
 						<tbody>
 							<tr>
 								<td>
-									<table class="row-content" align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #ffffff; border-radius: 0; color: #000000; width: 100%; max-width: 600px; margin: 0 auto;" width="600">
+									<table class="row-content" align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #ffffff; border-radius: 0; color: #000000; width: 600px; margin: 0 auto;" width="600">
 										<tbody>
 											<tr>
-												<td class="column column-1" width="66.66666666666667%" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; border-left: 1px solid #e3e4e6; border-top: 1px solid #e3e4e6; padding-left: 20px; padding-top: 20px; vertical-align: top; border-radius: 0px;">
-													<!-- Item Total -->
-													<table class="paragraph_block block-item-total" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;">
+												<td class="column column-1" width="66.66666666666667%" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; border-left: 1px solid #e3e4e6; border-top: 1px solid #e3e4e6; padding-bottom: 20px; padding-left: 20px; padding-top: 20px; vertical-align: top; border-radius: 0px;">
+													<table class="paragraph_block block-1" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;">
 														<tr>
-															<td class="pad" style="padding-bottom:5px;">
+															<td class="pad">
 																<div style="color:#101112;direction:ltr;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;letter-spacing:0px;line-height:1.2;text-align:left;mso-line-height-alt:19px;">
-																	<p style="margin: 0;">Item Total</p>
+																	<p style="margin: 0;">Item Total (5 Items)</p>
 																</div>
 															</td>
 														</tr>
 													</table>
-													<!-- Product Discounts -->
-													{% assign has_product_discount = false %}
-													{% assign has_shipping_discount = false %}
-													{% for discount in discounts %}
-														{% if discount.type == 'shipping' %}
-															{% assign has_shipping_discount = true %}
-														{% else %}
-															{% assign has_product_discount = true %}
-														{% endif %}
-													{% endfor %}
-													{% if has_product_discount %}
-													<table class="paragraph_block" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;">
-														<tr>
-															<td class="pad" style="padding-bottom:2px;padding-top:5px;">
-																<div style="color:#101112;direction:ltr;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:14px;font-weight:700;letter-spacing:0px;line-height:1.2;text-align:left;mso-line-height-alt:17px;">
-																	<p style="margin: 0;"><strong>Product Discounts</strong></p>
-																</div>
-															</td>
-														</tr>
-													</table>
-													{% for discount in discounts %}
-														{% if discount.type != 'shipping' %}
-													<table class="paragraph_block" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;">
-														<tr>
-															<td class="pad" style="padding-bottom:5px;padding-left:15px;">
-																<div style="color:#101112;direction:ltr;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;letter-spacing:0px;line-height:1.2;text-align:left;mso-line-height-alt:19px;">
-																	<p style="margin: 0;">{% if discount.code %}{{ discount.code }}{% else %}Discount{% endif %}</p>
-																</div>
-															</td>
-														</tr>
-													</table>
-														{% endif %}
-													{% endfor %}
-													{% endif %}
-													<!-- Shipping Discounts -->
-													{% if has_shipping_discount %}
-													<table class="paragraph_block" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;">
-														<tr>
-															<td class="pad" style="padding-bottom:2px;padding-top:5px;">
-																<div style="color:#101112;direction:ltr;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:14px;font-weight:700;letter-spacing:0px;line-height:1.2;text-align:left;mso-line-height-alt:17px;">
-																	<p style="margin: 0;"><strong>Shipping Discounts</strong></p>
-																</div>
-															</td>
-														</tr>
-													</table>
-													{% for discount in discounts %}
-														{% if discount.type == 'shipping' %}
-													<table class="paragraph_block" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;">
-														<tr>
-															<td class="pad" style="padding-bottom:5px;padding-left:15px;">
-																<div style="color:#101112;direction:ltr;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;letter-spacing:0px;line-height:1.2;text-align:left;mso-line-height-alt:19px;">
-																	<p style="margin: 0;">{% if discount.code %}{{ discount.code }}{% else %}Shipping Discount{% endif %}</p>
-																</div>
-															</td>
-														</tr>
-													</table>
-														{% endif %}
-													{% endfor %}
-													{% endif %}
-													<!-- Subtotal -->
-													<table class="paragraph_block block-subtotal" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;">
-														<tr>
-															<td class="pad" style="padding-bottom:5px;padding-top:5px;">
-																<div style="color:#101112;direction:ltr;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:700;letter-spacing:0px;line-height:1.2;text-align:left;mso-line-height-alt:19px;">
-																	<p style="margin: 0;"><strong>Subtotal</strong></p>
-																</div>
-															</td>
-														</tr>
-													</table>
-													<!-- Navidium Shipping Protection -->
-													{% for line in line_items %}
-														{% if line.product.handle contains 'navidium' or line.title contains 'Navidium' or line.title contains 'Shipping Protection' %}
-													<table class="paragraph_block" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;">
-														<tr>
-															<td class="pad" style="padding-bottom:5px;">
-																<div style="color:#101112;direction:ltr;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;letter-spacing:0px;line-height:1.2;text-align:left;mso-line-height-alt:19px;">
-																	<p style="margin: 0;">Navidium Shipping Protection</p>
-																</div>
-															</td>
-														</tr>
-													</table>
-														{% endif %}
-													{% endfor %}
-													<!-- Tax Breakdown -->
-													{% if tax_lines.size > 0 %}
-													{% for tax in tax_lines %}
-													<table class="paragraph_block" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;">
-														<tr>
-															<td class="pad" style="padding-bottom:5px;">
-																<div style="color:#101112;direction:ltr;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;letter-spacing:0px;line-height:1.2;text-align:left;mso-line-height-alt:19px;">
-																	<p style="margin: 0;">{{ tax.title }}</p>
-																</div>
-															</td>
-														</tr>
-													</table>
-													{% endfor %}
-													{% endif %}
-													<!-- Shipping Cost -->
-													{% for shipping_line in shipping_lines %}
-													<table class="paragraph_block" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;">
-														<tr>
-															<td class="pad" style="padding-bottom:5px;">
-																<div style="color:#101112;direction:ltr;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;letter-spacing:0px;line-height:1.2;text-align:left;mso-line-height-alt:19px;">
-																	<p style="margin: 0;">{{ shipping_line.title }}</p>
-																</div>
-															</td>
-														</tr>
-													</table>
-													{% endfor %}
 												</td>
-												<td class="column column-2" width="33.333333333333336%" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; border-right: 1px solid #e3e4e6; border-top: 1px solid #e3e4e6; padding-right: 20px; padding-top: 20px; vertical-align: top; border-radius: 0px;">
-													<!-- Item Total Value -->
-													<table class="paragraph_block block-item-total-value" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;">
+												<td class="column column-2" width="33.333333333333336%" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; border-right: 1px solid #e3e4e6; border-top: 1px solid #e3e4e6; padding-bottom: 20px; padding-right: 20px; padding-top: 20px; vertical-align: top; border-radius: 0px;">
+													<table class="paragraph_block block-1" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;">
 														<tr>
-															<td class="pad" style="padding-bottom:5px;">
+															<td class="pad">
 																<div style="color:#101112;direction:ltr;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;letter-spacing:0px;line-height:1.2;text-align:right;mso-line-height-alt:19px;">
-																	<p style="margin: 0;">{{ line_items_subtotal_price | money }}</p>
+																	<p style="margin: 0;">$2,847.00</p>
 																</div>
 															</td>
 														</tr>
 													</table>
-													<!-- Product Discount Values -->
-													{% if has_product_discount %}
-													<table class="paragraph_block" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;">
-														<tr>
-															<td class="pad" style="padding-bottom:2px;padding-top:5px;">
-																<div style="color:#101112;direction:ltr;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:14px;font-weight:700;letter-spacing:0px;line-height:1.2;text-align:right;mso-line-height-alt:17px;">
-																	<p style="margin: 0;">&nbsp;</p>
-																</div>
-															</td>
-														</tr>
-													</table>
-													{% for discount in discounts %}
-														{% if discount.type != 'shipping' %}
-													<table class="paragraph_block" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;">
-														<tr>
-															<td class="pad" style="padding-bottom:5px;">
-																<div style="color:#101112;direction:ltr;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;letter-spacing:0px;line-height:1.2;text-align:right;mso-line-height-alt:19px;">
-																	<p style="margin: 0;">-{{ discount.savings | money }}</p>
-																</div>
-															</td>
-														</tr>
-													</table>
-														{% endif %}
-													{% endfor %}
-													{% endif %}
-													<!-- Shipping Discount Values -->
-													{% if has_shipping_discount %}
-													<table class="paragraph_block" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;">
-														<tr>
-															<td class="pad" style="padding-bottom:2px;padding-top:5px;">
-																<div style="color:#101112;direction:ltr;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:14px;font-weight:700;letter-spacing:0px;line-height:1.2;text-align:right;mso-line-height-alt:17px;">
-																	<p style="margin: 0;">&nbsp;</p>
-																</div>
-															</td>
-														</tr>
-													</table>
-													{% for discount in discounts %}
-														{% if discount.type == 'shipping' %}
-													<table class="paragraph_block" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;">
-														<tr>
-															<td class="pad" style="padding-bottom:5px;">
-																<div style="color:#101112;direction:ltr;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;letter-spacing:0px;line-height:1.2;text-align:right;mso-line-height-alt:19px;">
-																	<p style="margin: 0;">-{{ discount.savings | money }}</p>
-																</div>
-															</td>
-														</tr>
-													</table>
-														{% endif %}
-													{% endfor %}
-													{% endif %}
-													<!-- Subtotal Value -->
-													<table class="paragraph_block block-subtotal-value" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;">
-														<tr>
-															<td class="pad" style="padding-bottom:5px;padding-top:5px;">
-																<div style="color:#101112;direction:ltr;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:700;letter-spacing:0px;line-height:1.2;text-align:right;mso-line-height-alt:19px;">
-																	<p style="margin: 0;"><strong>{{ subtotal_price | money }}</strong></p>
-																</div>
-															</td>
-														</tr>
-													</table>
-													<!-- Navidium Protection Value -->
-													{% for line in line_items %}
-														{% if line.product.handle contains 'navidium' or line.title contains 'Navidium' or line.title contains 'Shipping Protection' %}
-													<table class="paragraph_block" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;">
-														<tr>
-															<td class="pad" style="padding-bottom:5px;">
-																<div style="color:#101112;direction:ltr;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;letter-spacing:0px;line-height:1.2;text-align:right;mso-line-height-alt:19px;">
-																	<p style="margin: 0;">{{ line.final_line_price | money }}</p>
-																</div>
-															</td>
-														</tr>
-													</table>
-														{% endif %}
-													{% endfor %}
-													<!-- Tax Values -->
-													{% if tax_lines.size > 0 %}
-													{% for tax in tax_lines %}
-													<table class="paragraph_block" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;">
-														<tr>
-															<td class="pad" style="padding-bottom:5px;">
-																<div style="color:#101112;direction:ltr;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;letter-spacing:0px;line-height:1.2;text-align:right;mso-line-height-alt:19px;">
-																	<p style="margin: 0;">{{ tax.price | money }}</p>
-																</div>
-															</td>
-														</tr>
-													</table>
-													{% endfor %}
-													{% endif %}
-													<!-- Shipping Cost Value -->
-													{% for shipping_line in shipping_lines %}
-													<table class="paragraph_block" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;">
-														<tr>
-															<td class="pad" style="padding-bottom:5px;">
-																<div style="color:#101112;direction:ltr;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;letter-spacing:0px;line-height:1.2;text-align:right;mso-line-height-alt:19px;">
-																	<p style="margin: 0;">{% if shipping_line.price == 0 %}<span style="text-decoration: line-through;">{{ shipping_line.original_price | money }}</span> FREE{% else %}{{ shipping_line.price | money }}{% endif %}</p>
-																</div>
-															</td>
-														</tr>
-													</table>
-													{% endfor %}
 												</td>
 											</tr>
 										</tbody>
@@ -1135,6 +1052,303 @@
 							</tr>
 						</tbody>
 					</table>
+					
+					<!-- Discounts Header -->
+					<table class="row row-discounts-header" align="center" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
+						<tbody>
+							<tr>
+								<td>
+									<table class="row-content stack" align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #ffffff; border-radius: 0; color: #000000; width: 600px; margin: 0 auto;" width="600">
+										<tbody>
+											<tr>
+												<td class="column column-1" width="100%" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; background-color: #f5f5f5; border-left: 1px solid #e3e4e6; border-right: 1px solid #e3e4e6; border-top: 1px solid #e3e4e6; padding-bottom: 10px; padding-left: 20px; padding-right: 20px; padding-top: 10px; vertical-align: top; border-radius: 0px;">
+													<table class="paragraph_block block-1" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;">
+														<tr>
+															<td class="pad">
+																<div style="color:#101112;direction:ltr;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;letter-spacing:0px;line-height:1.2;text-align:left;mso-line-height-alt:19px;">
+																	<p style="margin: 0;"><strong>Discounts</strong></p>
+																</div>
+															</td>
+														</tr>
+													</table>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<!-- Discount Items -->
+					<table class="row row-discounts" align="center" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
+						<tbody>
+							<tr>
+								<td>
+									<table class="row-content" align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #ffffff; border-radius: 0; color: #000000; width: 600px; margin: 0 auto;" width="600">
+										<tbody>
+											<tr>
+												<td class="column column-1" width="66.66666666666667%" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; border-left: 1px solid #e3e4e6; border-top: 1px solid #e3e4e6; padding-left: 20px; padding-top: 20px; vertical-align: top; border-radius: 0px;">
+													<table class="paragraph_block" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;">
+														<tr>
+															<td class="pad" style="padding-bottom:5px;">
+																<div style="color:#101112;direction:ltr;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;letter-spacing:0px;line-height:1.2;text-align:left;mso-line-height-alt:19px;">
+																	<p style="margin: 0;">SAVE200</p>
+																</div>
+															</td>
+														</tr>
+													</table>
+												</td>
+												<td class="column column-2" width="33.333333333333336%" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; border-right: 1px solid #e3e4e6; border-top: 1px solid #e3e4e6; padding-right: 20px; padding-top: 20px; vertical-align: top; border-radius: 0px;">
+													<table class="paragraph_block" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;">
+														<tr>
+															<td class="pad" style="padding-bottom:5px;">
+																<div style="color:#101112;direction:ltr;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;letter-spacing:0px;line-height:1.2;text-align:right;mso-line-height-alt:19px;">
+																	<p style="margin: 0;">-$200.00</p>
+																</div>
+															</td>
+														</tr>
+													</table>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<!-- Divider after Discounts -->
+					<table class="row row-discounts-divider" align="center" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
+						<tbody>
+							<tr>
+								<td>
+									<table class="row-content stack" align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #ffffff; border-radius: 0; color: #000000; width: 600px; margin: 0 auto;" width="600">
+										<tbody>
+											<tr>
+												<td class="column column-1" width="100%" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; border-left: 1px solid #e3e4e6; border-right: 1px solid #e3e4e6; padding-left: 20px; padding-right: 20px; vertical-align: top; border-radius: 0px;">
+													<table class="divider_block block-1" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
+														<tr>
+															<td class="pad" style="padding-bottom:10px;padding-top:10px;">
+																<div class="alignment" align="center">
+																	<table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
+																		<tr>
+																			<td class="divider_inner" style="font-size: 1px; line-height: 1px; border-top: 1px solid #BBBBBB;"><span style="word-break: break-word;">&#8202;</span></td>
+																		</tr>
+																	</table>
+																</div>
+															</td>
+														</tr>
+													</table>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<!-- Subtotal Row -->
+					<table class="row row-subtotal" align="center" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
+						<tbody>
+							<tr>
+								<td>
+									<table class="row-content" align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #ffffff; border-radius: 0; color: #000000; width: 600px; margin: 0 auto;" width="600">
+										<tbody>
+											<tr>
+												<td class="column column-1" width="75%" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; border-left: 1px solid #e3e4e6; padding-bottom: 10px; padding-left: 20px; padding-right: 20px; vertical-align: top; border-radius: 0px;">
+													<table class="paragraph_block block-1" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;">
+														<tr>
+															<td class="pad" style="padding-bottom:5px;">
+																<div style="color:#101112;direction:ltr;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;letter-spacing:0px;line-height:1.2;text-align:left;mso-line-height-alt:19px;">
+																	<p style="margin: 0;">Subtotal (After Discounts)</p>
+																</div>
+															</td>
+														</tr>
+													</table>
+												</td>
+												<td class="column column-2" width="25%" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; border-right: 1px solid #e3e4e6; padding-bottom: 10px; padding-right: 20px; vertical-align: top; border-radius: 0px;">
+													<table class="paragraph_block block-1" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;">
+														<tr>
+															<td class="pad" style="padding-bottom:5px;">
+																<div style="color:#101112;direction:ltr;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;letter-spacing:0px;line-height:1.2;text-align:right;mso-line-height-alt:19px;">
+																	<p style="margin: 0;">$2,647.00</p>
+																</div>
+															</td>
+														</tr>
+													</table>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					
+					<!-- Shipping Header -->
+					<table class="row row-shipping-header" align="center" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
+						<tbody>
+							<tr>
+								<td>
+									<table class="row-content stack" align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #ffffff; border-radius: 0; color: #000000; width: 600px; margin: 0 auto;" width="600">
+										<tbody>
+											<tr>
+												<td class="column column-1" width="100%" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; background-color: #f5f5f5; border-left: 1px solid #e3e4e6; border-right: 1px solid #e3e4e6; border-top: 1px solid #e3e4e6; padding-bottom: 10px; padding-left: 20px; padding-right: 20px; padding-top: 10px; vertical-align: top; border-radius: 0px;">
+													<table class="paragraph_block block-1" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;">
+														<tr>
+															<td class="pad">
+																<div style="color:#101112;direction:ltr;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;letter-spacing:0px;line-height:1.2;text-align:left;mso-line-height-alt:19px;">
+																	<p style="margin: 0;"><strong>Shipping</strong></p>
+																</div>
+															</td>
+														</tr>
+													</table>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<!-- Shipping Items -->
+					<table class="row row-shipping" align="center" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
+						<tbody>
+							<tr>
+								<td>
+									<table class="row-content" align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #ffffff; border-radius: 0; color: #000000; width: 600px; margin: 0 auto;" width="600">
+										<tbody>
+											<tr>
+												<td class="column column-1" width="66.66666666666667%" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; border-left: 1px solid #e3e4e6; border-top: 1px solid #e3e4e6; padding-bottom: 20px; padding-left: 20px; padding-top: 20px; vertical-align: top; border-radius: 0px;">
+													<table class="paragraph_block" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;">
+														<tr>
+															<td class="pad" style="padding-bottom:5px;">
+																<div style="color:#101112;direction:ltr;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;letter-spacing:0px;line-height:1.2;text-align:left;mso-line-height-alt:19px;">
+																	<p style="margin: 0;">Shipping Protection</p>
+																</div>
+															</td>
+														</tr>
+													</table>
+													<table class="paragraph_block" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;">
+														<tr>
+															<td class="pad" style="padding-bottom:5px;">
+																<div style="color:#101112;direction:ltr;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;letter-spacing:0px;line-height:1.2;text-align:left;mso-line-height-alt:19px;">
+																	<p style="margin: 0;">Standard Shipping (5-7 business days)</p>
+																</div>
+															</td>
+														</tr>
+													</table>
+												</td>
+												<td class="column column-2" width="33.333333333333336%" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; border-right: 1px solid #e3e4e6; border-top: 1px solid #e3e4e6; padding-bottom: 20px; padding-right: 20px; padding-top: 20px; vertical-align: top; border-radius: 0px;">
+													<table class="paragraph_block" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;">
+														<tr>
+															<td class="pad" style="padding-bottom:5px;">
+																<div style="color:#101112;direction:ltr;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;letter-spacing:0px;line-height:1.2;text-align:right;mso-line-height-alt:19px;">
+																	<p style="margin: 0;">$54.00</p>
+																</div>
+															</td>
+														</tr>
+													</table>
+													<table class="paragraph_block" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;">
+														<tr>
+															<td class="pad" style="padding-bottom:5px;">
+																<div style="color:#101112;direction:ltr;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;letter-spacing:0px;line-height:1.2;text-align:right;mso-line-height-alt:19px;">
+																	<p style="margin: 0;"><span style="text-decoration: line-through;">$149.00</span> FREE</p>
+																</div>
+															</td>
+														</tr>
+													</table>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					
+					<!-- Taxes Header -->
+					<table class="row row-taxes-header" align="center" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
+						<tbody>
+							<tr>
+								<td>
+									<table class="row-content stack" align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #ffffff; border-radius: 0; color: #000000; width: 600px; margin: 0 auto;" width="600">
+										<tbody>
+											<tr>
+												<td class="column column-1" width="100%" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; background-color: #f5f5f5; border-left: 1px solid #e3e4e6; border-right: 1px solid #e3e4e6; border-top: 1px solid #e3e4e6; padding-bottom: 10px; padding-left: 20px; padding-right: 20px; padding-top: 10px; vertical-align: top; border-radius: 0px;">
+													<table class="paragraph_block block-1" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;">
+														<tr>
+															<td class="pad">
+																<div style="color:#101112;direction:ltr;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;letter-spacing:0px;line-height:1.2;text-align:left;mso-line-height-alt:19px;">
+																	<p style="margin: 0;"><strong>Taxes</strong></p>
+																</div>
+															</td>
+														</tr>
+													</table>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<!-- Tax Items -->
+					<table class="row row-taxes" align="center" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
+						<tbody>
+							<tr>
+								<td>
+									<table class="row-content" align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #ffffff; border-radius: 0; color: #000000; width: 600px; margin: 0 auto;" width="600">
+										<tbody>
+											<tr>
+												<td class="column column-1" width="66.66666666666667%" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; border-left: 1px solid #e3e4e6; border-top: 1px solid #e3e4e6; padding-left: 20px; padding-top: 20px; vertical-align: top; border-radius: 0px;">
+													<table class="paragraph_block" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;">
+														<tr>
+															<td class="pad" style="padding-bottom:5px;">
+																<div style="color:#101112;direction:ltr;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;letter-spacing:0px;line-height:1.2;text-align:left;mso-line-height-alt:19px;">
+																	<p style="margin: 0;">QC Tax (GST 5%)</p>
+																</div>
+															</td>
+														</tr>
+													</table>
+													<table class="paragraph_block" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;">
+														<tr>
+															<td class="pad" style="padding-bottom:5px;">
+																<div style="color:#101112;direction:ltr;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;letter-spacing:0px;line-height:1.2;text-align:left;mso-line-height-alt:19px;">
+																	<p style="margin: 0;">QC Tax (PST 9.975%)</p>
+																</div>
+															</td>
+														</tr>
+													</table>
+												</td>
+												<td class="column column-2" width="33.333333333333336%" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; border-right: 1px solid #e3e4e6; border-top: 1px solid #e3e4e6; padding-right: 20px; padding-top: 20px; vertical-align: top; border-radius: 0px;">
+													<table class="paragraph_block" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;">
+														<tr>
+															<td class="pad" style="padding-bottom:5px;">
+																<div style="color:#101112;direction:ltr;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;letter-spacing:0px;line-height:1.2;text-align:right;mso-line-height-alt:19px;">
+																	<p style="margin: 0;">$127.35</p>
+																</div>
+															</td>
+														</tr>
+													</table>
+													<table class="paragraph_block" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;">
+														<tr>
+															<td class="pad" style="padding-bottom:5px;">
+																<div style="color:#101112;direction:ltr;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;letter-spacing:0px;line-height:1.2;text-align:right;mso-line-height-alt:19px;">
+																	<p style="margin: 0;">$254.31</p>
+																</div>
+															</td>
+														</tr>
+													</table>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					
+					<!-- Divider before Grand Total -->
 					<table class="row row-17" align="center" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
 						<tbody>
 							<tr>
@@ -1164,6 +1378,7 @@
 							</tr>
 						</tbody>
 					</table>
+					<!-- Grand Total Row -->
 					<table class="row row-18" align="center" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
 						<tbody>
 							<tr>
@@ -1176,7 +1391,7 @@
 														<tr>
 															<td class="pad" style="padding-bottom:5px;">
 																<div style="color:#101112;direction:ltr;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;letter-spacing:0px;line-height:1.2;text-align:left;mso-line-height-alt:19px;">
-																	<p style="margin: 0;"><strong>Total ({{ item_count }} {% if item_count == 1 %}Item{% else %}Items{% endif %})</strong></p>
+																	<p style="margin: 0;"><strong>Grand Total</strong></p>
 																</div>
 															</td>
 														</tr>
@@ -1187,7 +1402,7 @@
 														<tr>
 															<td class="pad" style="padding-bottom:5px;">
 																<div style="color:#101112;direction:ltr;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;letter-spacing:0px;line-height:1.2;text-align:right;mso-line-height-alt:19px;">
-																	<p style="margin: 0;"><strong>{{ total_price | money }}</strong></p>
+																	<p style="margin: 0;"><strong>$2,876.21</strong></p>
 																</div>
 															</td>
 														</tr>
@@ -1221,7 +1436,7 @@
 														<tr>
 															<td class="pad" style="padding-bottom:5px;">
 																<div style="color:#101112;direction:ltr;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;letter-spacing:0px;line-height:1.2;text-align:left;mso-line-height-alt:19px;">
-																	<p style="margin: 0;">{{ shipping_address.name }}</p>
+																	<p style="margin: 0;">John Smith</p>
 																</div>
 															</td>
 														</tr>
@@ -1230,7 +1445,7 @@
 														<tr>
 															<td class="pad" style="padding-bottom:5px;">
 																<div style="color:#101112;direction:ltr;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;letter-spacing:0px;line-height:1.2;text-align:left;mso-line-height-alt:19px;">
-																	<p style="margin: 0;">{% if shipping_address.company != blank %}{{ shipping_address.company }}{% endif %}</p>
+																	<p style="margin: 0;">Smith Auto Services</p>
 																</div>
 															</td>
 														</tr>
@@ -1239,7 +1454,7 @@
 														<tr>
 															<td class="pad" style="padding-bottom:5px;">
 																<div style="color:#101112;direction:ltr;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;letter-spacing:0px;line-height:1.2;text-align:left;mso-line-height-alt:19px;">
-																	<p style="margin: 0;">{{ shipping_address.address1 }}{% if shipping_address.address2 != blank %}<br>{{ shipping_address.address2 }}{% endif %}</p>
+																	<p style="margin: 0;">1234 Rue Principale<br>Suite 100</p>
 																</div>
 															</td>
 														</tr>
@@ -1248,7 +1463,7 @@
 														<tr>
 															<td class="pad" style="padding-bottom:5px;">
 																<div style="color:#101112;direction:ltr;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;letter-spacing:0px;line-height:1.2;text-align:left;mso-line-height-alt:19px;">
-																	<p style="margin: 0;">{{ shipping_address.city }}, {{ shipping_address.province_code }} {{ shipping_address.zip }}</p>
+																	<p style="margin: 0;">Montreal, QC H2X 1Y4</p>
 																</div>
 															</td>
 														</tr>
@@ -1257,7 +1472,7 @@
 														<tr>
 															<td class="pad" style="padding-bottom:5px;">
 																<div style="color:#101112;direction:ltr;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;letter-spacing:0px;line-height:1.2;text-align:left;mso-line-height-alt:19px;">
-																	<p style="margin: 0;">{{ shipping_address.country }}</p>
+																	<p style="margin: 0;">Canada</p>
 																</div>
 															</td>
 														</tr>
@@ -1277,7 +1492,7 @@
 														<tr>
 															<td class="pad" style="padding-bottom:5px;">
 																<div style="color:#101112;direction:ltr;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;letter-spacing:0px;line-height:1.2;text-align:right;mso-line-height-alt:19px;">
-																	<p style="margin: 0;">{{ billing_address.name }}</p>
+																	<p style="margin: 0;">John Smith</p>
 																</div>
 															</td>
 														</tr>
@@ -1286,7 +1501,7 @@
 														<tr>
 															<td class="pad" style="padding-bottom:5px;">
 																<div style="color:#101112;direction:ltr;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;letter-spacing:0px;line-height:1.2;text-align:right;mso-line-height-alt:19px;">
-																	<p style="margin: 0;">{% if billing_address.company != blank %}{{ billing_address.company }}{% endif %}</p>
+																	<p style="margin: 0;">Smith Auto Services</p>
 																</div>
 															</td>
 														</tr>
@@ -1295,7 +1510,7 @@
 														<tr>
 															<td class="pad" style="padding-bottom:5px;">
 																<div style="color:#101112;direction:ltr;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;letter-spacing:0px;line-height:1.2;text-align:right;mso-line-height-alt:19px;">
-																	<p style="margin: 0;">{{ billing_address.address1 }}{% if billing_address.address2 != blank %}<br>{{ billing_address.address2 }}{% endif %}</p>
+																	<p style="margin: 0;">1234 Rue Principale<br>Suite 100</p>
 																</div>
 															</td>
 														</tr>
@@ -1304,7 +1519,7 @@
 														<tr>
 															<td class="pad" style="padding-bottom:5px;">
 																<div style="color:#101112;direction:ltr;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;letter-spacing:0px;line-height:1.2;text-align:right;mso-line-height-alt:19px;">
-																	<p style="margin: 0;">{{ billing_address.city }}, {{ billing_address.province_code }} {{ billing_address.zip }}</p>
+																	<p style="margin: 0;">Montreal, QC H2X 1Y4</p>
 																</div>
 															</td>
 														</tr>
@@ -1313,7 +1528,7 @@
 														<tr>
 															<td class="pad" style="padding-bottom:5px;">
 																<div style="color:#101112;direction:ltr;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;letter-spacing:0px;line-height:1.2;text-align:right;mso-line-height-alt:19px;">
-																	<p style="margin: 0;">{{ billing_address.country }}</p>
+																	<p style="margin: 0;">Canada</p>
 																</div>
 															</td>
 														</tr>
@@ -1395,7 +1610,7 @@
 														<tr>
 															<td class="pad" style="padding-bottom:10px;">
 																<div style="color:#101112;direction:ltr;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;letter-spacing:0px;line-height:1.2;text-align:left;mso-line-height-alt:19px;">
-																	<p style="margin: 0;"><strong>Before Installation — You MUST:</strong></p>
+																	<p style="margin: 0;"><strong>Before Installation â€” You MUST:</strong></p>
 																</div>
 															</td>
 														</tr>
@@ -1478,7 +1693,7 @@
 															<td class="pad">
 																<div style="margin-left:-20px">
 																	<ul start="1" style="margin-top: 0; margin-bottom: 0; list-style-type: revert;">
-																		<li style="Margin: 0 0 5px 0;">Adjust tire pressure to the PSI noted on your vehicle’s placard.</li>
+																		<li style="Margin: 0 0 5px 0;">Adjust tire pressure to the PSI noted on your vehicleâ€™s placard.</li>
 																		<li style="Margin: 0 0 5px 0;">Ensure correct tire rotation pattern is followed.</li>
 																	</ul>
 																</div>
@@ -1672,3 +1887,4 @@
 </body>
 
 </html>
+

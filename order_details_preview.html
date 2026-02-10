@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Order Details Preview</title>
+    <style>
+        /* Base Styles */
+        body { background-color: #ffffff; margin: 0; padding: 20px; }
+        table { mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-collapse: collapse; }
+        .container { background-color: #ffffff; width: 600px; margin: 0 auto; }
+        
+        /* Typography */
+        .text-base { color: #101112; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 1.2; }
+        .text-right { text-align: right; }
+        .text-left { text-align: left; }
+        .text-bold { font-weight: 700; }
+        .text-strike { text-decoration: line-through; }
+        
+        /* Borders */
+        .border-gray { border: 1px solid #e3e4e6; }
+        .border-left { border-left: 1px solid #e3e4e6; }
+        .border-right { border-right: 1px solid #e3e4e6; }
+        .border-top { border-top: 1px solid #e3e4e6; }
+        .border-bottom { border-bottom: 1px solid #e3e4e6; }
+        
+        /* Backgrounds */
+        .bg-gray { background-color: #f5f5f5; }
+        .bg-white { background-color: #ffffff; }
+        
+        /* Buttons */
+        .btn { display: inline-block; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 12px; font-weight: 700; padding: 5px 10px; border-radius: 4px; color: #ffffff; text-align: center; width: 100%; }
+        .btn-warning { background-color: #f29c13; }
+        .btn-dark { background-color: #1a1a1a; }
+        
+        /* Spacing */
+        .spacer { height: 10px; }
+    </style>
+</head>
+<body>
+
+<!-- Order Details Header -->
+<table class="container" align="center" width="600" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <td class="bg-gray border-left border-right border-top" style="padding: 10px 20px;">
+            <p class="text-base" style="margin: 0;"><strong>Order Details</strong></p>
+        </td>
+    </tr>
+</table>
+
+<!-- Product 1: With Low Stock Button -->
+<table class="container" align="center" width="600" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <!-- Product Image -->
+        <td width="25%" class="border-left border-top" style="padding: 20px 0 20px 20px; vertical-align: top;">
+            <div style="max-width: 92px; margin: 0 auto;">
+                <img src="https://wheelwiz.ca/cdn/shop/files/ASU757BTGB_2000x.jpg?v=1760500153" style="display: block; width: 100%; height: auto; border: 0;" alt="Touren TR77">
+            </div>
+        </td>
+        <!-- Product Details -->
+        <td width="42%" class="border-top text-base text-left" style="padding: 20px 0 20px 20px; vertical-align: top;">
+            <p style="margin: 0 0 10px 0;">Touren TR77 Floss black with red ring 17x7 +40 5x100 | 5x114.3mm 72.62mm</p>
+            <p style="margin: 0;">SKU: 3277-7703B</p>
+            <p style="margin: 0;">Quantity: 4 x <span class="text-strike">$250.00</span> $200.00</p>
+            <p style="margin: 0;">Lead Time: 4 Days</p>
+        </td>
+        <!-- Product Price -->
+        <td width="33%" class="border-right border-top text-base text-right" style="padding: 20px 20px 20px 0; vertical-align: top;">
+            <p style="margin: 0;"><span class="text-strike">$1,000.00</span><br>$800.00</p>
+        </td>
+    </tr>
+</table>
+
+<!-- Product 1: Notes Row with Low Stock Button -->
+<table class="container" align="center" width="600" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <!-- Button Column -->
+        <td width="25%" class="bg-gray border-left border-top border-bottom" style="padding: 20px; vertical-align: middle; text-align: right;">
+            <!--[if mso]>
+            <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" style="height:34px;width:100px;v-text-anchor:middle;" arcsize="12%" fillcolor="#f29c13">
+            <w:anchorlock/><v:textbox inset="0"><center style="color:#ffffff;font-family:Arial;font-size:12px">
+            <![endif]-->
+            <span class="btn btn-warning">Low Stock</span>
+            <!--[if mso]></center></v:textbox></v:roundrect><![endif]-->
+        </td>
+        <!-- Notes Column -->
+        <td width="75%" class="bg-gray border-right border-top border-bottom text-base" style="padding: 20px; vertical-align: middle;">
+            <p style="margin: 0;">Special Notes On Product</p>
+        </td>
+    </tr>
+</table>
+
+<!-- Spacer -->
+<table class="container" align="center" width="600" border="0" cellpadding="0" cellspacing="0">
+    <tr><td class="spacer"></td></tr>
+</table>
+
+<!-- Product 2: With Mounted & Balanced Button -->
+<table class="container" align="center" width="600" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <!-- Product Image -->
+        <td width="25%" class="border-left border-top" style="padding: 20px 0 20px 20px; vertical-align: top;">
+            <div style="max-width: 92px; margin: 0 auto;">
+                <img src="https://wheelwiz.ca/cdn/shop/files/ASU757BTGB_2000x.jpg?v=1760500153" style="display: block; width: 100%; height: auto; border: 0;" alt="Mount Balance Package">
+            </div>
+        </td>
+        <!-- Product Details -->
+        <td width="42%" class="border-top text-base text-left" style="padding: 20px 0 20px 20px; vertical-align: top;">
+            <p style="margin: 0 0 10px 0;">Mount & Balance Package - 4 Wheels</p>
+            <p style="margin: 0;">SKU: MOUNTBALANCE-4</p>
+            <p style="margin: 0;">Quantity: 1 x $99.99</p>
+            <p style="margin: 0;">Lead Time: 4 Days</p>
+        </td>
+        <!-- Product Price -->
+        <td width="33%" class="border-right border-top text-base text-right" style="padding: 20px 20px 20px 0; vertical-align: top;">
+            <p style="margin: 0;">$99.99</p>
+        </td>
+    </tr>
+</table>
+
+<!-- Product 2: Notes Row with Mounted & Balanced Button -->
+<table class="container" align="center" width="600" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <!-- Button Column -->
+        <td width="25%" class="bg-gray border-left border-top border-bottom" style="padding: 20px; vertical-align: middle; text-align: right;">
+            <!--[if mso]>
+            <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" style="height:34px;width:120px;v-text-anchor:middle;" arcsize="12%" fillcolor="#1a1a1a">
+            <w:anchorlock/><v:textbox inset="0"><center style="color:#ffffff;font-family:Arial;font-size:12px">
+            <![endif]-->
+            <span class="btn btn-dark">Mounted & Balanced</span>
+            <!--[if mso]></center></v:textbox></v:roundrect><![endif]-->
+        </td>
+        <!-- Notes Column -->
+        <td width="75%" class="bg-gray border-right border-top border-bottom text-base" style="padding: 20px; vertical-align: middle;">
+            <p style="margin: 0;">Wheels will be professionally mounted and balanced before shipping.</p>
+        </td>
+    </tr>
+</table>
+
+<!-- Spacer -->
+<table class="container" align="center" width="600" border="0" cellpadding="0" cellspacing="0">
+    <tr><td class="spacer"></td></tr>
+</table>
+
+<!-- Product 3: Notes Only (No Button) -->
+<table class="container" align="center" width="600" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <!-- Product Image -->
+        <td width="25%" class="border-left border-top" style="padding: 20px 0 20px 20px; vertical-align: top;">
+            <div style="max-width: 92px; margin: 0 auto;">
+                <img src="https://wheelwiz.ca/cdn/shop/files/ASU757BTGB_2000x.jpg?v=1760500153" style="display: block; width: 100%; height: auto; border: 0;" alt="Continental Tire">
+            </div>
+        </td>
+        <!-- Product Details -->
+        <td width="42%" class="border-top text-base text-left" style="padding: 20px 0 20px 20px; vertical-align: top;">
+            <p style="margin: 0 0 10px 0;">Continental ExtremeContact DWS06 Plus 225/45R17</p>
+            <p style="margin: 0;">SKU: TIRE-2254517</p>
+            <p style="margin: 0;">Quantity: 4 x $189.99</p>
+            <p style="margin: 0;">Lead Time: 2 Days</p>
+        </td>
+        <!-- Product Price -->
+        <td width="33%" class="border-right border-top text-base text-right" style="padding: 20px 20px 20px 0; vertical-align: top;">
+            <p style="margin: 0;">$759.96</p>
+        </td>
+    </tr>
+</table>
+
+<!-- Product 3: Notes Row (Full Width, No Button) -->
+<table class="container" align="center" width="600" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <td width="100%" class="bg-gray border-gray text-base" style="padding: 20px; vertical-align: middle;">
+            <p style="margin: 0;">Special Notes On Product</p>
+        </td>
+    </tr>
+</table>
+
+</body>
+</html>
