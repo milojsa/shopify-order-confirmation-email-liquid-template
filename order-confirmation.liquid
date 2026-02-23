@@ -146,6 +146,15 @@
 </head>
 <body>
     <div class="email-container">
+        <!-- Detect if this is a pickup/collection order -->
+        {% assign is_pickup = false %}
+        {% if shipping_lines %}
+            {% assign shipping_method = shipping_lines.first.title | downcase %}
+            {% if shipping_method contains 'pickup' or shipping_method contains 'collection' or shipping_method contains 'collect' %}
+                {% assign is_pickup = true %}
+            {% endif %}
+        {% endif %}
+
         <!-- Header Section -->
         <div class="header">
             {% if shop.logo %}
@@ -153,12 +162,20 @@
             {% else %}
             <h1>{{ shop.name }}</h1>
             {% endif %}
+            {% if is_pickup %}
+            <p style="color: #3498db; font-size: 18px; margin-top: 15px;">✓ Order Ready for Collection</p>
+            {% else %}
             <p style="color: #27ae60; font-size: 18px; margin-top: 15px;">✓ Order Confirmed</p>
+            {% endif %}
         </div>
 
         <!-- Greeting -->
         <p>Hi {% if customer.first_name %}{{ customer.first_name }}{% else %}{{ customer.email }}{% endif %},</p>
+        {% if is_pickup %}
+        <p>Thank you for your order! We're getting your order ready for collection. We'll notify you when it's ready to be picked up from our store.</p>
+        {% else %}
         <p>Thank you for your order! We're getting your order ready to be shipped. We'll notify you when it has been sent.</p>
+        {% endif %}
 
         <!-- Order Information -->
         <div class="order-info">
@@ -216,7 +233,11 @@
             </tr>
             {% if shipping_lines %}
             <tr>
+                {% if is_pickup %}
+                <td class="label">Collection ({{ shipping_lines.first.title }}):</td>
+                {% else %}
                 <td class="label">Shipping ({{ shipping_lines.first.title }}):</td>
+                {% endif %}
                 <td>{{ shipping_lines.first.price | money }}</td>
             </tr>
             {% endif %}
@@ -243,10 +264,37 @@
         </table>
 
         <!-- Addresses Section -->
+        {% if is_pickup %}
+        <h2>Collection & Billing Information</h2>
+        {% else %}
         <h2>Delivery & Billing Information</h2>
+        {% endif %}
         <div class="addresses">
-            <!-- Shipping Address -->
+            <!-- Collection/Shipping Address -->
             <div class="address-block">
+                {% if is_pickup %}
+                <h3>Collection Location</h3>
+                {% if shop.address %}
+                <p>
+                    <strong>{{ shop.name }}</strong><br>
+                    {{ shop.address.address1 }}<br>
+                    {% if shop.address.address2 %}
+                    {{ shop.address.address2 }}<br>
+                    {% endif %}
+                    {{ shop.address.city }}, {{ shop.address.province_code }} {{ shop.address.zip }}<br>
+                    {{ shop.address.country }}
+                </p>
+                {% if shop.phone %}
+                <p><strong>Phone:</strong> {{ shop.phone }}</p>
+                {% endif %}
+                <p style="margin-top: 10px; padding: 10px; background-color: #fff3cd; border-radius: 4px;">
+                    <strong>📍 Please collect your order from the above address.</strong><br>
+                    <small>We'll notify you when your order is ready for pickup.</small>
+                </p>
+                {% else %}
+                <p>Collection location: Please check your order confirmation for details.</p>
+                {% endif %}
+                {% else %}
                 <h3>Shipping Address</h3>
                 {% if shipping_address %}
                 <p>
@@ -263,6 +311,7 @@
                 {% endif %}
                 {% else %}
                 <p>No shipping address provided</p>
+                {% endif %}
                 {% endif %}
             </div>
 

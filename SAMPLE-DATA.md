@@ -263,7 +263,46 @@ Some fields may be `null` or empty:
 - Multiple tax lines
 ```
 
-### Scenario 3: Digital Products
+### Scenario 3: Pickup/Collection Order
+```liquid
+- Customer selected local pickup
+- Shipping method contains "pickup" or "collection"
+- Shows store address instead of shipping address
+- Different status message and text
+- Collection notice displayed
+```
+
+Example data for pickup order:
+```json
+{
+  "shipping_lines": [
+    {
+      "title": "Local Pickup",
+      "price": 0
+    }
+  ],
+  "shipping_address": null,
+  "shop": {
+    "name": "Your Store Name",
+    "address": {
+      "address1": "456 Commerce Blvd",
+      "city": "San Francisco",
+      "province_code": "CA",
+      "zip": "94102",
+      "country": "United States"
+    },
+    "phone": "+1 (555) 987-6543"
+  }
+}
+```
+
+Expected output for pickup orders:
+- Status: "✓ Order Ready for Collection" (blue)
+- Text: "We're getting your order ready for collection..."
+- Shows: "Collection Location" with store address
+- Notice: "📍 Please collect your order from the above address"
+
+### Scenario 4: Digital Products
 ```liquid
 - Digital/downloadable products
 - No shipping address
@@ -271,7 +310,7 @@ Some fields may be `null` or empty:
 - No shipping costs
 ```
 
-### Scenario 4: International Order
+### Scenario 5: International Order
 ```liquid
 - Customer in different country
 - Multiple currencies
@@ -279,7 +318,7 @@ Some fields may be `null` or empty:
 - Different tax structure
 ```
 
-### Scenario 5: Gift Order
+### Scenario 6: Gift Order
 ```liquid
 - Different billing and shipping addresses
 - Gift message included

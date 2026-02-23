@@ -5,10 +5,11 @@ A professional and responsive email template for Shopify order confirmation emai
 ## Features
 
 - ✅ **Responsive Design**: Mobile-friendly layout that adapts to any screen size
+- ✅ **Collection/Pickup Support**: Automatic detection and special layout for pickup orders
 - ✅ **Complete Order Information**: Order number, date, and customer details
 - ✅ **Itemized Product List**: Products with images, variants, quantities, and prices
 - ✅ **Comprehensive Pricing**: Subtotal, shipping, taxes, discounts, and total
-- ✅ **Address Display**: Both shipping and billing addresses
+- ✅ **Address Display**: Both shipping and billing addresses (or collection location for pickup)
 - ✅ **Payment Information**: Payment method and transaction details
 - ✅ **Branding Support**: Shop logo, name, and contact information
 - ✅ **Customer Support Section**: Easy access to help and contact information
@@ -20,7 +21,7 @@ A professional and responsive email template for Shopify order confirmation emai
 
 1. **Header Section**
    - Shop logo or name
-   - Order confirmation status
+   - Order confirmation status (changes for pickup/collection orders)
 
 2. **Order Information**
    - Order number
@@ -35,13 +36,14 @@ A professional and responsive email template for Shopify order confirmation emai
 
 4. **Price Breakdown**
    - Subtotal
-   - Shipping costs
+   - Shipping/Collection costs
    - Discounts (if applicable)
    - Taxes
    - Total amount with currency
 
 5. **Delivery & Billing Information**
-   - Shipping address
+   - Shipping address (for delivery orders)
+   - Collection location (for pickup orders - shows store address)
    - Billing address
    - Contact phone numbers
 
@@ -67,6 +69,33 @@ A professional and responsive email template for Shopify order confirmation emai
 5. Copy the contents of `order-confirmation.liquid`
 6. Paste into the email template editor
 7. Click **Save**
+
+## Pickup/Collection Orders
+
+The template automatically detects when a customer has selected local pickup or collection and adjusts the email accordingly:
+
+### Automatic Detection
+The template checks if the shipping method contains any of these terms (case-insensitive):
+- "pickup"
+- "collection"
+- "collect"
+
+### Changes for Pickup Orders
+When a pickup order is detected, the template automatically:
+
+1. **Status Message**: Changes from "✓ Order Confirmed" (green) to "✓ Order Ready for Collection" (blue)
+2. **Greeting Text**: Updates to mention collection instead of shipping
+3. **Address Section**: Shows "Collection Location" with your store address instead of the customer's shipping address
+4. **Collection Notice**: Displays a highlighted notice with pickup instructions
+5. **Price Label**: Changes "Shipping" to "Collection" in the totals
+
+### Configure Store Address
+Make sure your store address is set correctly in Shopify:
+1. Go to **Settings** → **General**
+2. Scroll to **Store address**
+3. Fill in your complete business address
+
+This address will be displayed as the collection location for pickup orders.
 
 ## Customization
 

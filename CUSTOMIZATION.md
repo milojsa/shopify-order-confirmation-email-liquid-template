@@ -83,7 +83,71 @@ Change to:
 
 ## Advanced Customizations
 
-### 1. Add Tracking Information
+### 1. Customize Pickup Detection Keywords
+
+If your store uses different terms for pickup, modify the detection logic:
+
+```liquid
+{% assign is_pickup = false %}
+{% if shipping_lines %}
+    {% assign shipping_method = shipping_lines.first.title | downcase %}
+    {% if shipping_method contains 'pickup' 
+       or shipping_method contains 'collection' 
+       or shipping_method contains 'collect'
+       or shipping_method contains 'store pickup'
+       or shipping_method contains 'click and collect' %}
+        {% assign is_pickup = true %}
+    {% endif %}
+{% endif %}
+```
+
+### 2. Customize Collection Notice
+
+Change the pickup notice message and style:
+
+```liquid
+<p style="margin-top: 10px; padding: 10px; background-color: #e3f2fd; border-radius: 4px; border-left: 4px solid #2196f3;">
+    <strong>🏪 Store Pickup Information</strong><br>
+    <small>Your order will be ready within 2-4 hours. We'll send you an email when it's ready!</small><br>
+    <small>Please bring your order number and a valid ID.</small>
+</p>
+```
+
+### 3. Add Opening Hours for Pickup
+
+Add pickup hours to the collection location:
+
+```liquid
+{% if is_pickup %}
+<h3>Collection Location</h3>
+{% if shop.address %}
+<p>
+    <strong>{{ shop.name }}</strong><br>
+    {{ shop.address.address1 }}<br>
+    {{ shop.address.city }}, {{ shop.address.province_code }} {{ shop.address.zip }}
+</p>
+<p><strong>Opening Hours:</strong><br>
+    Monday - Friday: 9:00 AM - 6:00 PM<br>
+    Saturday: 10:00 AM - 4:00 PM<br>
+    Sunday: Closed
+</p>
+{% endif %}
+{% endif %}
+```
+
+### 4. Different Status Colors for Pickup
+
+Customize the status color and icon for pickup orders:
+
+```liquid
+{% if is_pickup %}
+<p style="color: #ff9800; font-size: 18px; margin-top: 15px;">📦 Ready for Pickup Soon</p>
+{% else %}
+<p style="color: #27ae60; font-size: 18px; margin-top: 15px;">✓ Order Confirmed</p>
+{% endif %}
+```
+
+### 5. Add Tracking Information
 
 Add this after the Order Information section:
 
