@@ -83,7 +83,7 @@ The template checks if the shipping method contains any of these terms (case-ins
 ### Changes for Pickup Orders
 When a pickup order is detected, the template automatically:
 
-1. **Status Message**: Changes from "✓ Order Confirmed" (green) to "✓ Order Ready for Collection" (blue)
+1. **Status Message**: Changes from "✓ Order Confirmed" (green) to "✓ Order Confirmed - Collection" (blue)
 2. **Greeting Text**: Updates to mention collection instead of shipping
 3. **Address Section**: Shows "Collection Location" with your store address instead of the customer's shipping address
 4. **Collection Notice**: Displays a highlighted notice with pickup instructions
