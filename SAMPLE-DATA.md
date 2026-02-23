@@ -297,7 +297,7 @@ Example data for pickup order:
 ```
 
 Expected output for pickup orders:
-- Status: "✓ Order Ready for Collection" (blue)
+- Status: "✓ Order Confirmed - Collection" (blue)
 - Text: "We're getting your order ready for collection..."
 - Shows: "Collection Location" with store address
 - Notice: "📍 Please collect your order from the above address"

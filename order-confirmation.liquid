@@ -163,7 +163,7 @@
             <h1>{{ shop.name }}</h1>
             {% endif %}
             {% if is_pickup %}
-            <p style="color: #3498db; font-size: 18px; margin-top: 15px;">✓ Order Ready for Collection</p>
+            <p style="color: #3498db; font-size: 18px; margin-top: 15px;">✓ Order Confirmed - Collection</p>
             {% else %}
             <p style="color: #27ae60; font-size: 18px; margin-top: 15px;">✓ Order Confirmed</p>
             {% endif %}
@@ -277,12 +277,12 @@
                 {% if shop.address %}
                 <p>
                     <strong>{{ shop.name }}</strong><br>
-                    {{ shop.address.address1 }}<br>
+                    {% if shop.address.address1 %}{{ shop.address.address1 }}<br>{% endif %}
                     {% if shop.address.address2 %}
                     {{ shop.address.address2 }}<br>
                     {% endif %}
-                    {{ shop.address.city }}, {{ shop.address.province_code }} {{ shop.address.zip }}<br>
-                    {{ shop.address.country }}
+                    {% if shop.address.city %}{{ shop.address.city }}{% endif %}{% if shop.address.province_code %}, {{ shop.address.province_code }}{% endif %}{% if shop.address.zip %} {{ shop.address.zip }}{% endif %}<br>
+                    {% if shop.address.country %}{{ shop.address.country }}{% endif %}
                 </p>
                 {% if shop.phone %}
                 <p><strong>Phone:</strong> {{ shop.phone }}</p>

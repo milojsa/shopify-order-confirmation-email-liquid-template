@@ -85,17 +85,13 @@ Change to:
 
 ### 1. Customize Pickup Detection Keywords
 
-If your store uses different terms for pickup, modify the detection logic:
+If your store uses different terms for pickup, modify the detection logic. Note: Keep the entire condition on one line for Liquid compatibility:
 
 ```liquid
 {% assign is_pickup = false %}
 {% if shipping_lines %}
     {% assign shipping_method = shipping_lines.first.title | downcase %}
-    {% if shipping_method contains 'pickup' 
-       or shipping_method contains 'collection' 
-       or shipping_method contains 'collect'
-       or shipping_method contains 'store pickup'
-       or shipping_method contains 'click and collect' %}
+    {% if shipping_method contains 'pickup' or shipping_method contains 'collection' or shipping_method contains 'collect' or shipping_method contains 'store pickup' or shipping_method contains 'click and collect' %}
         {% assign is_pickup = true %}
     {% endif %}
 {% endif %}
@@ -141,7 +137,7 @@ Customize the status color and icon for pickup orders:
 
 ```liquid
 {% if is_pickup %}
-<p style="color: #ff9800; font-size: 18px; margin-top: 15px;">📦 Ready for Pickup Soon</p>
+<p style="color: #ff9800; font-size: 18px; margin-top: 15px;">📦 Order Confirmed - Pickup</p>
 {% else %}
 <p style="color: #27ae60; font-size: 18px; margin-top: 15px;">✓ Order Confirmed</p>
 {% endif %}
