@@ -367,6 +367,8 @@
 </head>
 
 <body class="body" style="background-color: #ffffff; margin: 0; padding: 0; -webkit-text-size-adjust: none; text-size-adjust: none;">
+	{% capture default_utms %}utm_campaign=payment-error-email&utm_medium=email&utm_source=OrderlyEmails{% endcapture %}
+	{% capture question_mark %}?{% endcapture %}
 	<table class="nl-container" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #ffffff; background-repeat: no-repeat; background-image: none; background-position: top left; background-size: auto;">
 		<tbody>
 			<tr>
@@ -411,7 +413,7 @@
 																	<table class="heading_block block-1" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
 																		<tr>
 																			<td class="pad" style="text-align:center;width:100%;">
-																				<h1 style="margin: 0; color: #ffffff; direction: ltr; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 38px; font-weight: 700; letter-spacing: normal; line-height: 1.2; text-align: center; margin-top: 0; margin-bottom: 0; mso-line-height-alt: 46px;"><span class="tinyMce-placeholder" style="word-break: break-word;">Hi {First_Name}, <br>Your Payment Couldn't Be Processed</span></h1>
+																				<h1 style="margin: 0; color: #ffffff; direction: ltr; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 38px; font-weight: 700; letter-spacing: normal; line-height: 1.2; text-align: center; margin-top: 0; margin-bottom: 0; mso-line-height-alt: 46px;"><span class="tinyMce-placeholder" style="word-break: break-word;">{% if customer.first_name != blank or billing_address.first_name != blank %}Hi {{ customer.first_name | default: billing_address.first_name }}, <br>{% endif %}Your Payment Couldn't Be Processed</span></h1>
 																			</td>
 																		</tr>
 																	</table>
@@ -420,6 +422,7 @@
 																		<tr>
 																			<td class="pad">
 																				<div style="color:#ffffff;direction:ltr;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;letter-spacing:0px;line-height:1.2;text-align:center;mso-line-height-alt:19px;">
+																					{% if custom_message != blank %}<p style="margin: 0 0 10px;">{{ custom_message }}</p>{% endif %}
 																					<p style="margin: 0;">You added items to your cart but you haven't been charged. Click below to try paying for the order again.</p>
 																				</div>
 																			</td>
@@ -430,12 +433,12 @@
 																		<tr>
 																			<td class="pad" style="text-align:center;">
 																				<div class="alignment" align="center"><!--[if mso]>
-<v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word"   style="height:50px;width:120px;v-text-anchor:middle;" arcsize="8%" fillcolor="#ffffff">
+<v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="{% capture link %}{{ url }}{% endcapture %}{% if link contains shop.domain %}{% assign split_link = link | split: question_mark %}{{ split_link[0] }}?{{ default_utms }}&utm_content=button&utm_term=pay-now{% if split_link[1] != blank %}&{{ split_link[1] }}{% endif %}{% else %}{{ link }}{% endif %}"  style="height:50px;width:120px;v-text-anchor:middle;" arcsize="8%" fillcolor="#ffffff">
 <v:stroke dashstyle="Solid" weight="0px" color="#ffffff"/>
 <w:anchorlock/>
 <v:textbox inset="0px,0px,0px,0px">
 <center dir="false" style="color:#000000;font-family:Arial, sans-serif;font-size:20px">
-<![endif]--><span class="button" style="background-color: #ffffff; border-bottom: 0px solid transparent; border-left: 0px solid transparent; border-radius: 4px; border-right: 0px solid transparent; border-top: 0px solid transparent; color: #000000; display: inline-block; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 20px; font-weight: 400; mso-border-alt: none; text-align: center; width: auto; word-break: keep-all; letter-spacing: normal;"><span class="btn-pad" style="word-break: break-word; padding-left: 20px; padding-right: 20px; padding-top: 5px; padding-bottom: 5px; display: block;"><span style="word-break: break-word; line-height: 40px;">Pay Now</span></span></span><!--[if mso]></center></v:textbox></v:roundrect><![endif]--></div>
+<![endif]--><a href="{% capture link %}{{ url }}{% endcapture %}{% if link contains shop.domain %}{% assign split_link = link | split: question_mark %}{{ split_link[0] }}?{{ default_utms }}&utm_content=button&utm_term=pay-now{% if split_link[1] != blank %}&{{ split_link[1] }}{% endif %}{% else %}{{ link }}{% endif %}" target="_blank" style="text-decoration:none;"><span class="button" style="background-color: #ffffff; border-bottom: 0px solid transparent; border-left: 0px solid transparent; border-radius: 4px; border-right: 0px solid transparent; border-top: 0px solid transparent; color: #000000; display: inline-block; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 20px; font-weight: 400; mso-border-alt: none; text-align: center; width: auto; word-break: keep-all; letter-spacing: normal;"><span class="btn-pad" style="word-break: break-word; padding-left: 20px; padding-right: 20px; padding-top: 5px; padding-bottom: 5px; display: block;"><span style="word-break: break-word; line-height: 40px;">Pay Now</span></span></span></a><!--[if mso]></center></v:textbox></v:roundrect><![endif]--></div>
 																			</td>
 																		</tr>
 																	</table>
@@ -479,7 +482,7 @@
 													<table class="heading_block block-1" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
 														<tr>
 															<td class="pad" style="text-align:center;width:100%;">
-																<h2 style="margin: 0; color: #000000; direction: ltr; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 30px; font-weight: 400; letter-spacing: normal; line-height: 1.2; text-align: center; margin-top: 0; margin-bottom: 0; mso-line-height-alt: 36px;"><span class="tinyMce-placeholder" style="word-break: break-word;">Order No. <strong>#9999<br></strong></span></h2>
+																<h2 style="margin: 0; color: #000000; direction: ltr; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 30px; font-weight: 400; letter-spacing: normal; line-height: 1.2; text-align: center; margin-top: 0; margin-bottom: 0; mso-line-height-alt: 36px;"><span class="tinyMce-placeholder" style="word-break: break-word;">Order No. <strong>#{{ name }}<br></strong></span></h2>
 															</td>
 														</tr>
 													</table>
@@ -487,7 +490,7 @@
 														<tr>
 															<td class="pad">
 																<div style="color:#101112;direction:ltr;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;letter-spacing:0px;line-height:1.2;text-align:center;mso-line-height-alt:19px;">
-																	<p style="margin: 0;">November 06, 2025</p>
+																	<p style="margin: 0;">{{ created_at | date: "%B %d, %Y" }}</p>
 																</div>
 															</td>
 														</tr>
@@ -548,7 +551,20 @@
 							</tr>
 						</tbody>
 					</table>
-					<table class="row row-7" align="center" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
+					{% assign has_mountbalance = false %}
+				{% assign shipping_protection_price = 0 %}
+				{% for item in line_items %}
+				{% assign sku_upper = item.sku | default: item.variant.sku | upcase %}
+				{% assign title_upper = item.product.title | default: item.title | upcase %}
+				{% if sku_upper contains 'MOUNTBALANCE' or sku_upper contains 'MOUNT BALANCE' or sku_upper contains 'MOUNT-BALANCE' or title_upper contains 'MOUNT' and title_upper contains 'BALANCE' %}
+				{% assign has_mountbalance = true %}
+				{% endif %}
+				{% if title_upper contains 'SHIPPING PROTECTION' or title_upper contains 'SHIPPING-PROTECTION' or sku_upper contains 'SHIPPING-PROTECTION' or sku_upper contains 'SHIPPINGPROTECTION' %}
+				{% assign shipping_protection_price = shipping_protection_price | plus: item.final_line_price %}
+				{% endif %}
+				{% endfor %}
+				{% for line_item in line_items %}
+					<table class="row product-row" align="center" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
 						<tbody>
 							<tr>
 								<td>
@@ -563,7 +579,7 @@
 																	<tr>
 																		<td class="pad" style="width:100%;padding-right:0px;padding-left:0px;">
 																			<div class="alignment" align="center">
-																				<div class="fullWidth" style="max-width: 92.88px;"><img src="https://wheelwiz.ca/cdn/shop/files/ASU757BTGB_2000x.jpg?v=1760500153" style="display: block; height: auto; border: 0; width: 100%;" width="92.88" alt title height="auto"></div>
+																				<div class="fullWidth" style="max-width: 92.88px;">{% if line_item.image %}<img src="{{ line_item.image | image_url: width: 200 }}" style="display: block; height: auto; border: 0; width: 100%;" width="92.88" alt="{{ line_item.title | escape }}" title height="auto">{% endif %}</div>
 																			</div>
 																		</td>
 																	</tr>
@@ -580,26 +596,28 @@
 																	<tr>
 																		<td class="pad">
 																			<div style="color:#101112;direction:ltr;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;letter-spacing:0px;line-height:1.2;text-align:left;mso-line-height-alt:19px;">
-																				<p style="margin: 0;">Touren TR77 Floss black with red ring 17x7 +40 5x100 | 5x114.3mm 72.62mm</p>
+																				<p style="margin: 0;">{{ line_item.product.title | default: line_item.title }}{% if line_item.variant.title != blank and line_item.variant.title != "Default Title" %} - {{ line_item.variant.title }}{% endif %}</p>
 																			</div>
 																		</td>
 																	</tr>
 																</table>
 																<div class="spacer_block block-2" style="height:10px;line-height:10px;font-size:1px;">&#8202;</div>
+																{% if line_item.sku != blank %}
 																<table class="paragraph_block block-3" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;">
 																	<tr>
 																		<td class="pad">
 																			<div style="color:#101112;direction:ltr;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;letter-spacing:0px;line-height:1.2;text-align:left;mso-line-height-alt:19px;">
-																				<p style="margin: 0;">SKU: 3277-7703B</p>
+																				<p style="margin: 0;">SKU: {{ line_item.sku }}</p>
 																			</div>
 																		</td>
 																	</tr>
 																</table>
+																{% endif %}
 																<table class="paragraph_block block-4" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;">
 																	<tr>
 																		<td class="pad">
 																			<div style="color:#101112;direction:ltr;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;letter-spacing:0px;line-height:1.2;text-align:left;mso-line-height-alt:19px;">
-																				<p style="margin: 0;">Quantity: 4 x <span style="word-break: break-word; text-decoration: line-through;">$250</span> $200</p>
+																				<p style="margin: 0;">Quantity: {{ line_item.quantity }} x {% if line_item.original_price != line_item.final_price %}<span style="word-break: break-word; text-decoration: line-through;">{{ line_item.original_price | money }}</span> {% endif %}{{ line_item.final_price | money }}</p>
 																			</div>
 																		</td>
 																	</tr>
@@ -616,7 +634,7 @@
 																	<tr>
 																		<td class="pad">
 																			<div style="color:#101112;direction:ltr;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;letter-spacing:0px;line-height:1.2;text-align:right;mso-line-height-alt:19px;">
-																				<p style="margin: 0;"><span style="word-break: break-word; text-decoration: line-through;">$1000</span><br>$800</p>
+																				<p style="margin: 0;">{% if line_item.original_line_price != line_item.final_line_price %}<span style="word-break: break-word; text-decoration: line-through;">{{ line_item.original_line_price | money }}</span><br>{% endif %}{{ line_item.final_line_price | money }}</p>
 																			</div>
 																		</td>
 																	</tr>
@@ -632,17 +650,39 @@
 							</tr>
 						</tbody>
 					</table>
-					<table class="row row-8" align="center" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
+					{% comment %} --- Check for LOW STOCK Badge --- {% endcomment %}
+					{% assign show_low_stock = false %}
+					{% assign inventory_info = line_item.product.metafields.custom.inventory_info %}
+					{% if inventory_info != blank %}
+					{% assign inventory_qty = inventory_info | split: '"quantity":' | last | split: ',' | first | plus: 0 %}
+					{% if inventory_qty > 0 and inventory_qty <= 10 %}{% assign show_low_stock = true %}{% endif %}
+					{% endif %}
+					{% comment %} --- Check for MOUNTED & BALANCED Badge --- {% endcomment %}
+					{% assign show_mounted_balanced = false %}
+					{% if has_mountbalance %}
+					{% assign product_title_lower = line_item.product.title | default: line_item.title | downcase %}
+					{% assign product_type_lower = line_item.product.type | downcase %}
+					{% assign mb_check_sku_upper = line_item.sku | default: line_item.variant.sku | upcase %}
+					{% assign mb_check_title_upper = line_item.product.title | default: line_item.title | upcase %}
+					{% unless mb_check_sku_upper contains 'MOUNTBALANCE' or mb_check_sku_upper contains 'MOUNT BALANCE' or mb_check_sku_upper contains 'MOUNT-BALANCE' or mb_check_title_upper contains 'MOUNT' and mb_check_title_upper contains 'BALANCE' %}
+					{% if product_title_lower contains 'wheel' or product_title_lower contains 'tire' or product_title_lower contains 'rim' or product_type_lower contains 'wheel' or product_type_lower contains 'tire' or product_type_lower contains 'rim' %}
+					{% assign show_mounted_balanced = true %}
+					{% endif %}
+					{% endunless %}
+					{% endif %}
+					{% if line_item.product.metafields.magento.notes != blank or show_low_stock or show_mounted_balanced %}
+					<table class="row notes-row" align="center" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
 						<tbody>
 							<tr>
 								<td>
 									<table class="row-content" align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #ffffff; border-radius: 0; color: #000000; width: 600px; margin: 0 auto;" width="600">
 										<tbody>
 											<tr>
-												<td class="column column-1" width="25%" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; background-color: #f5f5f5; border-bottom: 1px solid #e3e4e6; border-left: 1px solid #e3e4e6; border-top: 1px solid #e3e4e6; vertical-align: middle; border-radius: 0px 0px 0px 0px;">
+												<td class="column column-1" width="25%" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; background-color: #f5f5f5; border-bottom: 1px solid #e3e4e6; border-left: 1px solid #e3e4e6; border-top: 1px solid #e3e4e6; vertical-align: middle; border-radius: 0px;">
 													<table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
 														<tr>
 															<td class="col-pad" style="padding-bottom:20px;padding-left:20px;padding-top:20px;">
+																{% if show_low_stock %}
 																<table class="button_block block-1" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
 																	<tr>
 																		<td class="pad" style="text-align:right;">
@@ -656,11 +696,26 @@
 																		</td>
 																	</tr>
 																</table>
+																{% elsif show_mounted_balanced %}
+																<table class="button_block block-1" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
+																	<tr>
+																		<td class="pad" style="text-align:right;">
+																			<div class="alignment" align="right"><!--[if mso]>
+<v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word"   style="height:34px;width:180px;v-text-anchor:middle;" arcsize="12%" fillcolor="#1a1a1a">
+<v:stroke dashstyle="Solid" weight="0px" color="#1a1a1a"/>
+<w:anchorlock/>
+<v:textbox inset="0px,0px,0px,0px">
+<center dir="false" style="color:#ffffff;font-family:Arial, sans-serif;font-size:12px">
+<![endif]--><span class="button" style="background-color: #1a1a1a; border-bottom: 0px solid transparent; border-left: 0px solid transparent; border-radius: 4px; border-right: 0px solid transparent; border-top: 0px solid transparent; color: #ffffff; display: inline-block; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 12px; font-weight: 700; mso-border-alt: none; text-align: center; width: 100%; word-break: keep-all; letter-spacing: normal;"><span class="btn-pad" style="word-break: break-word; padding-left: 10px; padding-right: 10px; padding-top: 5px; padding-bottom: 5px; display: block;"><span style="word-break: break-word; line-height: 24px;">Mounted &amp; Balanced</span></span></span><!--[if mso]></center></v:textbox></v:roundrect><![endif]--></div>
+																		</td>
+																	</tr>
+																</table>
+																{% endif %}
 															</td>
 														</tr>
 													</table>
 												</td>
-												<td class="column column-2" width="75%" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; background-color: #f5f5f5; border-bottom: 1px solid #e3e4e6; border-right: 1px solid #e3e4e6; border-top: 1px solid #e3e4e6; vertical-align: middle; border-radius: 0px 0px 0px 0px;">
+												<td class="column column-2" width="75%" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; background-color: #f5f5f5; border-bottom: 1px solid #e3e4e6; border-right: 1px solid #e3e4e6; border-top: 1px solid #e3e4e6; vertical-align: middle; border-radius: 0px;">
 													<table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
 														<tr>
 															<td class="col-pad" style="padding-bottom:20px;padding-left:20px;padding-right:20px;padding-top:20px;">
@@ -668,7 +723,7 @@
 																	<tr>
 																		<td class="pad">
 																			<div style="color:#101112;direction:ltr;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;letter-spacing:0px;line-height:1.2;text-align:left;mso-line-height-alt:19px;">
-																				<p style="margin: 0;">Special Notes On Product</p>
+																				<p style="margin: 0;">{% if line_item.product.metafields.magento.notes != blank %}{{ line_item.product.metafields.magento.notes }}{% endif %}</p>
 																			</div>
 																		</td>
 																	</tr>
@@ -684,138 +739,8 @@
 							</tr>
 						</tbody>
 					</table>
-					<table class="row row-9" align="center" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
-						<tbody>
-							<tr>
-								<td>
-									<table class="row-content stack" align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #ffffff; border-radius: 0; color: #000000; width: 600px; margin: 0 auto;" width="600">
-										<tbody>
-											<tr>
-												<td class="column column-1" width="100%" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; vertical-align: top;">
-													<div class="spacer_block block-1" style="height:10px;line-height:10px;font-size:1px;">&#8202;</div>
-												</td>
-											</tr>
-										</tbody>
-									</table>
-								</td>
-							</tr>
-						</tbody>
-					</table>
-					<table class="row row-10" align="center" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
-						<tbody>
-							<tr>
-								<td>
-									<table class="row-content" align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #ffffff; border-radius: 0; color: #000000; width: 600px; margin: 0 auto;" width="600">
-										<tbody>
-											<tr>
-												<td class="column column-1" width="25%" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; border-left: 1px solid #e3e4e6; border-top: 1px solid #e3e4e6; vertical-align: top; border-radius: 0px 0px 0px 0px;">
-													<table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
-														<tr>
-															<td class="col-pad" style="padding-bottom:20px;padding-left:20px;padding-top:20px;">
-																<table class="image_block block-1" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
-																	<tr>
-																		<td class="pad" style="width:100%;padding-right:0px;padding-left:0px;">
-																			<div class="alignment" align="center">
-																				<div class="fullWidth" style="max-width: 92.88px;"><img src="https://wheelwiz.ca/cdn/shop/files/ASU757BTGB_2000x.jpg?v=1760500153" style="display: block; height: auto; border: 0; width: 100%;" width="92.88" alt title height="auto"></div>
-																			</div>
-																		</td>
-																	</tr>
-																</table>
-															</td>
-														</tr>
-													</table>
-												</td>
-												<td class="column column-2" width="41.666666666666664%" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; border-top: 1px solid #e3e4e6; vertical-align: top; border-radius: 0px 0px 0px 0px;">
-													<table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
-														<tr>
-															<td class="col-pad" style="padding-bottom:20px;padding-left:20px;padding-top:20px;">
-																<table class="paragraph_block block-1" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;">
-																	<tr>
-																		<td class="pad">
-																			<div style="color:#101112;direction:ltr;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;letter-spacing:0px;line-height:1.2;text-align:left;mso-line-height-alt:19px;">
-																				<p style="margin: 0;">Touren TR77 Floss black with red ring 17x7 +40 5x100 | 5x114.3mm 72.62mm</p>
-																			</div>
-																		</td>
-																	</tr>
-																</table>
-																<div class="spacer_block block-2" style="height:10px;line-height:10px;font-size:1px;">&#8202;</div>
-																<table class="paragraph_block block-3" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;">
-																	<tr>
-																		<td class="pad">
-																			<div style="color:#101112;direction:ltr;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;letter-spacing:0px;line-height:1.2;text-align:left;mso-line-height-alt:19px;">
-																				<p style="margin: 0;">SKU: 3277-7703B</p>
-																			</div>
-																		</td>
-																	</tr>
-																</table>
-																<table class="paragraph_block block-4" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;">
-																	<tr>
-																		<td class="pad">
-																			<div style="color:#101112;direction:ltr;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;letter-spacing:0px;line-height:1.2;text-align:left;mso-line-height-alt:19px;">
-																				<p style="margin: 0;">Quantity: 4 x <span style="word-break: break-word; text-decoration: line-through;">$250</span> $200</p>
-																			</div>
-																		</td>
-																	</tr>
-																</table>
-															</td>
-														</tr>
-													</table>
-												</td>
-												<td class="column column-3" width="33.333333333333336%" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; border-right: 1px solid #e3e4e6; border-top: 1px solid #e3e4e6; vertical-align: top; border-radius: 0px 0px 0px 0px;">
-													<table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
-														<tr>
-															<td class="col-pad" style="padding-bottom:20px;padding-right:20px;padding-top:20px;">
-																<table class="paragraph_block block-1" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;">
-																	<tr>
-																		<td class="pad">
-																			<div style="color:#101112;direction:ltr;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;letter-spacing:0px;line-height:1.2;text-align:right;mso-line-height-alt:19px;">
-																				<p style="margin: 0;"><span style="word-break: break-word; text-decoration: line-through;">$1000</span><br>$800</p>
-																			</div>
-																		</td>
-																	</tr>
-																</table>
-															</td>
-														</tr>
-													</table>
-												</td>
-											</tr>
-										</tbody>
-									</table>
-								</td>
-							</tr>
-						</tbody>
-					</table>
-					<table class="row row-11" align="center" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
-						<tbody>
-							<tr>
-								<td>
-									<table class="row-content" align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #ffffff; border-radius: 0; color: #000000; width: 600px; margin: 0 auto;" width="600">
-										<tbody>
-											<tr>
-												<td class="column column-1" width="100%" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; background-color: #f5f5f5; border-bottom: 1px solid #e3e4e6; border-left: 1px solid #e3e4e6; border-right: 1px solid #e3e4e6; border-top: 1px solid #e3e4e6; vertical-align: middle; border-radius: 0px 0px 0px 0px;">
-													<table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
-														<tr>
-															<td class="col-pad" style="padding-bottom:20px;padding-left:20px;padding-right:20px;padding-top:20px;">
-																<table class="paragraph_block block-1" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;">
-																	<tr>
-																		<td class="pad">
-																			<div style="color:#101112;direction:ltr;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;letter-spacing:0px;line-height:1.2;text-align:left;mso-line-height-alt:19px;">
-																				<p style="margin: 0;">Special Notes On Product</p>
-																			</div>
-																		</td>
-																	</tr>
-																</table>
-															</td>
-														</tr>
-													</table>
-												</td>
-											</tr>
-										</tbody>
-									</table>
-								</td>
-							</tr>
-						</tbody>
-					</table>
+					{% endif %}
+				{% endfor %}
 					<table class="row row-12" align="center" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
 						<tbody>
 							<tr>
@@ -879,29 +804,22 @@
 																	<tr>
 																		<td class="pad" style="padding-bottom:5px;">
 																			<div style="color:#101112;direction:ltr;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;letter-spacing:0px;line-height:1.2;text-align:left;mso-line-height-alt:19px;">
-																				<p style="margin: 0;">Item Total (10 Items)</p>
+																				<p style="margin: 0;">Item Total ({{ item_count }} {% if item_count == 1 %}Item{% else %}Items{% endif %})</p>
 																			</div>
 																		</td>
 																	</tr>
 																</table>
-																<table class="paragraph_block block-2" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;">
+																{% for discount in discounts %}
+																<table class="paragraph_block block-discount" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;">
 																	<tr>
 																		<td class="pad" style="padding-bottom:5px;">
 																			<div style="color:#101112;direction:ltr;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;letter-spacing:0px;line-height:1.2;text-align:left;mso-line-height-alt:19px;">
-																				<p style="margin: 0;">Order Discount (ORDER10)</p>
+																				<p style="margin: 0;">{% if discount.type == 'ShippingDiscount' or discount.type == 'shipping' %}Shipping Discount{% else %}Order Discount{% endif %}{% if discount.code != blank %} ({{ discount.code }}){% endif %}</p>
 																			</div>
 																		</td>
 																	</tr>
 																</table>
-																<table class="paragraph_block block-3" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;">
-																	<tr>
-																		<td class="pad">
-																			<div style="color:#101112;direction:ltr;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;letter-spacing:0px;line-height:1.2;text-align:left;mso-line-height-alt:19px;">
-																				<p style="margin: 0;">Product Discount (PROD5)</p>
-																			</div>
-																		</td>
-																	</tr>
-																</table>
+																{% endfor %}
 															</td>
 														</tr>
 													</table>
@@ -914,29 +832,22 @@
 																	<tr>
 																		<td class="pad" style="padding-bottom:5px;">
 																			<div style="color:#101112;direction:ltr;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;letter-spacing:0px;line-height:1.2;text-align:right;mso-line-height-alt:19px;">
-																				<p style="margin: 0;">$2350.00</p>
+																				<p style="margin: 0;">{{ subtotal_price | money }}</p>
 																			</div>
 																		</td>
 																	</tr>
 																</table>
-																<table class="paragraph_block block-2" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;">
+																{% for discount in discounts %}
+																<table class="paragraph_block block-discount" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;">
 																	<tr>
 																		<td class="pad" style="padding-bottom:5px;">
 																			<div style="color:#101112;direction:ltr;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;letter-spacing:0px;line-height:1.2;text-align:right;mso-line-height-alt:19px;">
-																				<p style="margin: 0;">$2350.00</p>
+																				<p style="margin: 0;">-{{ discount.savings | money }}</p>
 																			</div>
 																		</td>
 																	</tr>
 																</table>
-																<table class="paragraph_block block-3" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;">
-																	<tr>
-																		<td class="pad">
-																			<div style="color:#101112;direction:ltr;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;letter-spacing:0px;line-height:1.2;text-align:right;mso-line-height-alt:19px;">
-																				<p style="margin: 0;">$2350.00</p>
-																			</div>
-																		</td>
-																	</tr>
-																</table>
+																{% endfor %}
 															</td>
 														</tr>
 													</table>
@@ -989,7 +900,7 @@
 																	<tr>
 																		<td class="pad" style="padding-bottom:5px;">
 																			<div style="color:#101112;direction:ltr;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;letter-spacing:0px;line-height:1.2;text-align:right;mso-line-height-alt:19px;">
-																				<p style="margin: 0;">$20.00</p>
+																				<p style="margin: 0;">{{ shipping_protection_price | money }}</p>
 																			</div>
 																		</td>
 																	</tr>
@@ -998,7 +909,7 @@
 																	<tr>
 																		<td class="pad">
 																			<div style="color:#101112;direction:ltr;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;letter-spacing:0px;line-height:1.2;text-align:right;mso-line-height-alt:19px;">
-																				<p style="margin: 0;"><span style="word-break: break-word; text-decoration: line-through;">$20.00</span> FREE</p>
+																				<p style="margin: 0;">{% if shipping_price == 0 %}FREE{% else %}{{ shipping_price | money }}{% endif %}</p>
 																			</div>
 																		</td>
 																	</tr>
@@ -1046,7 +957,7 @@
 																	<tr>
 																		<td class="pad">
 																			<div style="color:#101112;direction:ltr;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;letter-spacing:0px;line-height:1.2;text-align:right;mso-line-height-alt:19px;">
-																				<p style="margin: 0;">$20.00</p>
+																				<p style="margin: 0;">{{ tax_price | money }}</p>
 																			</div>
 																		</td>
 																	</tr>
@@ -1094,7 +1005,7 @@
 																	<tr>
 																		<td class="pad">
 																			<div style="color:#101112;direction:ltr;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;letter-spacing:0px;line-height:1.2;text-align:right;mso-line-height-alt:19px;">
-																				<p style="margin: 0;"><strong>$1600</strong></p>
+																				<p style="margin: 0;"><strong>{{ total_price | money }}</strong></p>
 																			</div>
 																		</td>
 																	</tr>
@@ -1134,25 +1045,27 @@
 																	<tr>
 																		<td class="pad" style="padding-bottom:5px;">
 																			<div style="color:#101112;direction:ltr;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;letter-spacing:0px;line-height:1.2;text-align:left;mso-line-height-alt:19px;">
-																				<p style="margin: 0;">Steve Shipper</p>
+																				<p style="margin: 0;">{{ shipping_address.name }}</p>
 																			</div>
 																		</td>
 																	</tr>
 																</table>
+																{% if shipping_address.company != blank %}
 																<table class="paragraph_block block-3" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;">
 																	<tr>
 																		<td class="pad" style="padding-bottom:5px;">
 																			<div style="color:#101112;direction:ltr;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;letter-spacing:0px;line-height:1.2;text-align:left;mso-line-height-alt:19px;">
-																				<p style="margin: 0;">Shipping Company</p>
+																				<p style="margin: 0;">{{ shipping_address.company }}</p>
 																			</div>
 																		</td>
 																	</tr>
 																</table>
+																{% endif %}
 																<table class="paragraph_block block-4" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;">
 																	<tr>
 																		<td class="pad" style="padding-bottom:5px;">
 																			<div style="color:#101112;direction:ltr;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;letter-spacing:0px;line-height:1.2;text-align:left;mso-line-height-alt:19px;">
-																				<p style="margin: 0;">123 Shipping Street&nbsp;</p>
+																				<p style="margin: 0;">{{ shipping_address.address1 }}{% if shipping_address.address2 != blank %}<br>{{ shipping_address.address2 }}{% endif %}</p>
 																			</div>
 																		</td>
 																	</tr>
@@ -1161,7 +1074,7 @@
 																	<tr>
 																		<td class="pad" style="padding-bottom:5px;">
 																			<div style="color:#101112;direction:ltr;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;letter-spacing:0px;line-height:1.2;text-align:left;mso-line-height-alt:19px;">
-																				<p style="margin: 0;">Shippington, KY 40003</p>
+																				<p style="margin: 0;">{{ shipping_address.city }}, {{ shipping_address.province_code }} {{ shipping_address.zip }}</p>
 																			</div>
 																		</td>
 																	</tr>
@@ -1170,7 +1083,7 @@
 																	<tr>
 																		<td class="pad" style="padding-bottom:5px;">
 																			<div style="color:#101112;direction:ltr;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;letter-spacing:0px;line-height:1.2;text-align:left;mso-line-height-alt:19px;">
-																				<p style="margin: 0;">United States</p>
+																				<p style="margin: 0;">{{ shipping_address.country }}</p>
 																			</div>
 																		</td>
 																	</tr>
@@ -1196,25 +1109,27 @@
 																	<tr>
 																		<td class="pad" style="padding-bottom:5px;">
 																			<div style="color:#101112;direction:ltr;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;letter-spacing:0px;line-height:1.2;text-align:right;mso-line-height-alt:19px;">
-																				<p style="margin: 0;">Bob Biller</p>
+																				<p style="margin: 0;">{{ billing_address.name }}</p>
 																			</div>
 																		</td>
 																	</tr>
 																</table>
+																{% if billing_address.company != blank %}
 																<table class="paragraph_block block-3" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;">
 																	<tr>
 																		<td class="pad" style="padding-bottom:5px;">
 																			<div style="color:#101112;direction:ltr;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;letter-spacing:0px;line-height:1.2;text-align:right;mso-line-height-alt:19px;">
-																				<p style="margin: 0;">My Company</p>
+																				<p style="margin: 0;">{{ billing_address.company }}</p>
 																			</div>
 																		</td>
 																	</tr>
 																</table>
+																{% endif %}
 																<table class="paragraph_block block-4" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;">
 																	<tr>
 																		<td class="pad" style="padding-bottom:5px;">
 																			<div style="color:#101112;direction:ltr;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;letter-spacing:0px;line-height:1.2;text-align:right;mso-line-height-alt:19px;">
-																				<p style="margin: 0;">123 Billing Street</p>
+																				<p style="margin: 0;">{{ billing_address.address1 }}{% if billing_address.address2 != blank %}<br>{{ billing_address.address2 }}{% endif %}</p>
 																			</div>
 																		</td>
 																	</tr>
@@ -1223,7 +1138,7 @@
 																	<tr>
 																		<td class="pad" style="padding-bottom:5px;">
 																			<div style="color:#101112;direction:ltr;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;letter-spacing:0px;line-height:1.2;text-align:right;mso-line-height-alt:19px;">
-																				<p style="margin: 0;">Billtown, KY 40003</p>
+																				<p style="margin: 0;">{{ billing_address.city }}, {{ billing_address.province_code }} {{ billing_address.zip }}</p>
 																			</div>
 																		</td>
 																	</tr>
@@ -1232,7 +1147,7 @@
 																	<tr>
 																		<td class="pad" style="padding-bottom:5px;">
 																			<div style="color:#101112;direction:ltr;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;letter-spacing:0px;line-height:1.2;text-align:right;mso-line-height-alt:19px;">
-																				<p style="margin: 0;">United States</p>
+																				<p style="margin: 0;">{{ billing_address.country }}</p>
 																			</div>
 																		</td>
 																	</tr>
@@ -1277,12 +1192,12 @@
 														<tr>
 															<td class="pad" style="text-align:center;">
 																<div class="alignment" align="center"><!--[if mso]>
-<v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word"   style="height:50px;width:120px;v-text-anchor:middle;" arcsize="8%" fillcolor="#000000">
+<v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="{% capture link %}{{ url }}{% endcapture %}{% if link contains shop.domain %}{% assign split_link = link | split: question_mark %}{{ split_link[0] }}?{{ default_utms }}&utm_content=button&utm_term=pay-now{% if split_link[1] != blank %}&{{ split_link[1] }}{% endif %}{% else %}{{ link }}{% endif %}"  style="height:50px;width:120px;v-text-anchor:middle;" arcsize="8%" fillcolor="#000000">
 <v:stroke dashstyle="Solid" weight="0px" color="#000000"/>
 <w:anchorlock/>
 <v:textbox inset="0px,0px,0px,0px">
 <center dir="false" style="color:#ffffff;font-family:Arial, sans-serif;font-size:20px">
-<![endif]--><span class="button" style="background-color: #000000; border-bottom: 0px solid transparent; border-left: 0px solid transparent; border-radius: 4px; border-right: 0px solid transparent; border-top: 0px solid transparent; color: #ffffff; display: inline-block; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 20px; font-weight: 400; mso-border-alt: none; text-align: center; width: auto; word-break: keep-all; letter-spacing: normal;"><span class="btn-pad" style="word-break: break-word; padding-left: 20px; padding-right: 20px; padding-top: 5px; padding-bottom: 5px; display: block;"><span style="word-break: break-word; line-height: 40px;">Pay Now</span></span></span><!--[if mso]></center></v:textbox></v:roundrect><![endif]--></div>
+<![endif]--><a href="{% capture link %}{{ url }}{% endcapture %}{% if link contains shop.domain %}{% assign split_link = link | split: question_mark %}{{ split_link[0] }}?{{ default_utms }}&utm_content=button&utm_term=pay-now{% if split_link[1] != blank %}&{{ split_link[1] }}{% endif %}{% else %}{{ link }}{% endif %}" target="_blank" style="text-decoration:none;"><span class="button" style="background-color: #000000; border-bottom: 0px solid transparent; border-left: 0px solid transparent; border-radius: 4px; border-right: 0px solid transparent; border-top: 0px solid transparent; color: #ffffff; display: inline-block; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 20px; font-weight: 400; mso-border-alt: none; text-align: center; width: auto; word-break: keep-all; letter-spacing: normal;"><span class="btn-pad" style="word-break: break-word; padding-left: 20px; padding-right: 20px; padding-top: 5px; padding-bottom: 5px; display: block;"><span style="word-break: break-word; line-height: 40px;">Pay Now</span></span></span></a><!--[if mso]></center></v:textbox></v:roundrect><![endif]--></div>
 															</td>
 														</tr>
 													</table>
@@ -1488,6 +1403,7 @@
 			</tr>
 		</tbody>
 	</table><!-- End -->
+	<img id="open-image" src="https://{{ shop.domain }}/tools/emails/open/payment-error/22" alt="" width="1" height="1" border="0">
 </body>
 
 </html>
