@@ -426,6 +426,91 @@
 			.row-32 .column-1 .col-pad {
 				padding: 0 20px 10px !important;
 			}
+
+			/* Mobile styles for dynamic product/notes/spacer rows */
+			.product-row .row-content,
+			.notes-row .row-content,
+			.spacer-row .row-content {
+				padding: 0 10px !important;
+			}
+
+			/* Product row - 3 column layout (image, details, price) */
+			.product-row .column-1 .col-pad {
+				padding: 10px 0 10px 10px !important;
+				border-top: 1px solid #e3e4e6;
+				border-left: 1px solid #e3e4e6;
+			}
+
+			.product-row .column-2 .col-pad {
+				padding: 10px 0 10px 10px !important;
+				border-top: 1px solid #e3e4e6;
+			}
+
+			.product-row .column-3 .col-pad {
+				padding: 10px 10px 10px 0 !important;
+				border-top: 1px solid #e3e4e6;
+				border-right: 1px solid #e3e4e6;
+			}
+
+			.product-row .column-2 .block-1.paragraph_block td.pad,
+			.product-row .column-2 .block-3.paragraph_block td.pad,
+			.product-row .column-2 .block-4.paragraph_block td.pad,
+			.product-row .column-2 .block-5.paragraph_block td.pad,
+			.product-row .column-3 .block-1.paragraph_block td.pad {
+				padding: 0 !important;
+			}
+
+			.product-row .column-2 .block-1.paragraph_block td.pad>div,
+			.product-row .column-2 .block-3.paragraph_block td.pad>div,
+			.product-row .column-2 .block-4.paragraph_block td.pad>div,
+			.product-row .column-2 .block-5.paragraph_block td.pad>div {
+				text-align: left !important;
+				font-size: 12px !important;
+			}
+
+			.product-row .column-3 .block-1.paragraph_block td.pad>div {
+				text-align: right !important;
+				font-size: 12px !important;
+			}
+
+			/* Notes row - 2 column layout (badge + notes) */
+			.notes-row .column-1[width="25%"] .col-pad {
+				padding: 10px 0 10px 10px !important;
+				border-top: 1px solid #e3e4e6;
+				border-bottom: 1px solid #e3e4e6;
+				border-left: 1px solid #e3e4e6;
+			}
+
+			.notes-row .column-2[width="75%"] .col-pad {
+				padding: 10px !important;
+				border-top: 1px solid #e3e4e6;
+				border-right: 1px solid #e3e4e6;
+				border-bottom: 1px solid #e3e4e6;
+			}
+
+			/* Notes row - single column layout (notes only) */
+			.notes-row .column-1[width="100%"] .col-pad {
+				padding: 10px !important;
+				border-top: 1px solid #e3e4e6;
+				border-right: 1px solid #e3e4e6;
+				border-bottom: 1px solid #e3e4e6;
+				border-left: 1px solid #e3e4e6;
+			}
+
+			.notes-row .column-1 .block-1.paragraph_block td.pad,
+			.notes-row .column-2 .block-1.paragraph_block td.pad {
+				padding: 0 !important;
+			}
+
+			.notes-row .column-2 .block-1.paragraph_block td.pad>div {
+				text-align: left !important;
+				font-size: 12px !important;
+			}
+
+			/* Spacer row */
+			.spacer-row .column-1 .block-1.spacer_block {
+				height: 10px !important;
+			}
 		}
 	</style>
 	<!--[if mso ]><style>sup, sub { font-size: 100% !important; } sup { mso-text-raise:10% } sub { mso-text-raise:-10% }</style> <![endif]-->
